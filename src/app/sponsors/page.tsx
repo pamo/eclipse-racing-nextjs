@@ -1,8 +1,17 @@
 import { client } from "@/lib/sanity";
 import Image from "next/image";
-import { urlFor } from "@/lib/sanity";
+import { urlFor, SanityImageSource } from "@/lib/sanity";
+import { notFound } from "next/navigation";
 
-async function getSponsors() {
+interface Sponsor {
+  _id: string;
+  name: string;
+  website: string;
+  logo: SanityImageSource;
+  description: string;
+}
+
+async function getSponsors(): Promise<Sponsor[]> {
   return client.fetch(`
     *[_type == "sponsor"] | order(name asc) {
       _id,
@@ -15,13 +24,14 @@ async function getSponsors() {
 }
 
 export default async function SponsorsPage() {
-  const sponsors = await getSponsors();
+  const sponsors: Sponsor[] = await getSponsors();
+  if (!sponsors) notFound();
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Our Sponsors</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sponsors.map((sponsor) => (
+        {sponsors.map((sponsor: Sponsor) => (
           <div
             key={sponsor._id}
             className="bg-white shadow-lg rounded-lg overflow-hidden"

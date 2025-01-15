@@ -1,5 +1,6 @@
 import { client } from '@/lib/sanity'
 import TeamMembersList from '@/components/TeamMembersList'
+import { notFound } from "next/navigation";
 
 async function getTeamMembers() {
   return client.fetch(`
@@ -16,6 +17,8 @@ async function getTeamMembers() {
 
 export default async function TeamPage() {
   const members = await getTeamMembers();
+
+  if (!members) notFound();
 
   return (
     <div className="container mx-auto px-4 py-8">

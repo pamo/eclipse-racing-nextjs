@@ -35,7 +35,7 @@ export default async function RootLayout({
         <header className="bg-gray-800 text-white p-4">
           <nav className="container mx-auto flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold">
-              {siteSettings.title}
+              {siteSettings?.title}
             </Link>
             <ul className="flex space-x-4">
               <li>
@@ -63,8 +63,8 @@ export default async function RootLayout({
         <footer className="bg-gray-800 text-white p-4 mt-8">
           <div className="container mx-auto text-center">
             <p>
-              &copy; {new Date().getFullYear()} {siteSettings.title}. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} {siteSettings?.title}. All
+              rights reserved.
             </p>
           </div>
         </footer>

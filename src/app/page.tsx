@@ -18,7 +18,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      {siteSettings.logo && (
+      {siteSettings?.logo && (
         <Image
           src={urlFor(siteSettings.logo).width(200).height(200).url()}
           alt={siteSettings.title}
