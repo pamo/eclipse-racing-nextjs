@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import { urlFor } from '@/lib/sanity'
+import { SanityImageSource, urlFor } from '@/lib/sanity'
 
 interface TeamMember {
   _id: string
   name: string
   yearJoined: number
   bio: string
-  image?: string
+  image?: SanityImageSource
 }
 
 export default function TeamMembersList({ members }: { members: TeamMember[] }) {

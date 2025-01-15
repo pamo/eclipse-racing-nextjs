@@ -1,7 +1,21 @@
 import { client } from '@/lib/sanity'
 import TeamMembersList from '@/components/TeamMembersList'
 
-async function getTeamMembers() {
+interface TeamMember {
+  _id: string
+  name: string
+  yearJoined: number
+  bio: string
+  image?: {
+    asset: {
+      _ref: string;
+      _type: 'reference';
+    };
+    _type: 'image';
+  }
+}
+
+async function getTeamMembers(): Promise<TeamMember[]> {
   return client.fetch(`
     *[_type == "teamMember"] | order(name asc) {
       _id,
