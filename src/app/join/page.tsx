@@ -19,7 +19,7 @@ async function getApplicationInfo(): Promise<ApplicationInfo | null> {
   `);
 }
 
-export default async function ApplicationPage() {
+export default async function JoinPage() {
   const applicationInfo = await getApplicationInfo();
 
   if (!applicationInfo) notFound();
