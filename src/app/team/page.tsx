@@ -1,6 +1,6 @@
-import { client } from '@/lib/sanity'
-import TeamMembersList from '@/components/TeamMembersList'
-import { notFound } from "next/navigation";
+import { client } from '@/lib/sanity';
+import TeamMembersList from '@/components/TeamMembersList';
+import { notFound } from 'next/navigation';
 
 async function getTeamMembers() {
   return client.fetch(`
@@ -22,9 +22,7 @@ export default async function TeamPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-eclipse-blue-dark text-center">
-        Our Team
-      </h1>
+      <h1 className="text-4xl font-bold mb-8 text-eclipse-blue-dark text-center">Our Team</h1>
 
       <TeamMembersList members={members} />
     </div>

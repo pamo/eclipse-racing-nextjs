@@ -1,7 +1,7 @@
-import { client } from "@/lib/sanity";
-import { PortableText } from "@portabletext/react";
-import { notFound } from "next/navigation";
-import type { PortableTextBlock } from "@portabletext/types";
+import { client } from '@/lib/sanity';
+import { PortableText } from '@portabletext/react';
+import { notFound } from 'next/navigation';
+import type { PortableTextBlock } from '@portabletext/types';
 interface ApplicationInfo {
   title: string;
   content: PortableTextBlock[];
@@ -36,9 +36,7 @@ export default async function JoinPage() {
           <li key={index}>{step}</li>
         ))}
       </ol>
-      <p className="mb-4">
-        Ready to take the next step? Fill out our application form:
-      </p>
+      <p className="mb-4">Ready to take the next step? Fill out our application form:</p>
       <a href={applicationInfo.applicationFormLink} className="btn btn-primary">
         Application Form
       </a>

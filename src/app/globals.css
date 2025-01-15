@@ -22,11 +22,13 @@ body {
 
 @layer utilities {
   .psychedelic-bg {
-    background: linear-gradient(45deg,
-          theme("colors.eclipse-blue.light"),
-          theme("colors.eclipse-pink.light"),
-          theme("colors.eclipse-yellow.light"),
-          theme("colors.eclipse-green.light"));
+    background: linear-gradient(
+      45deg,
+      theme('colors.eclipse-blue.light'),
+      theme('colors.eclipse-pink.light'),
+      theme('colors.eclipse-yellow.light'),
+      theme('colors.eclipse-green.light')
+    );
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
   }
@@ -50,23 +52,23 @@ body {
   .btn {
     @apply px-4 py-2 rounded font-bold transition duration-300 ease-in-out;
   }
-    .pixel-borders {
-      box-shadow:
-        -4px 0 0 0 theme("colors.eclipse-blue.dark"),
-        4px 0 0 0 theme("colors.eclipse-blue.dark"),
-        0 -4px 0 0 theme("colors.eclipse-blue.dark"),
-        0 4px 0 0 theme("colors.eclipse-blue.dark");
-    }
-  
-    .pixel-borders-inner {
-      box-shadow:
-        inset -4px 0 0 0 theme("colors.eclipse-blue.light"),
-        inset 4px 0 0 0 theme("colors.eclipse-blue.light"),
-        inset 0 -4px 0 0 theme("colors.eclipse-blue.light"),
-        inset 0 4px 0 0 theme("colors.eclipse-blue.light");
-    }
-  
-    .pixel-shadow {
-      box-shadow: 8px 8px 0 0 theme("colors.eclipse-blue.dark");
-    }
+  .pixel-borders {
+    box-shadow:
+      -4px 0 0 0 theme('colors.eclipse-blue.dark'),
+      4px 0 0 0 theme('colors.eclipse-blue.dark'),
+      0 -4px 0 0 theme('colors.eclipse-blue.dark'),
+      0 4px 0 0 theme('colors.eclipse-blue.dark');
+  }
+
+  .pixel-borders-inner {
+    box-shadow:
+      inset -4px 0 0 0 theme('colors.eclipse-blue.light'),
+      inset 4px 0 0 0 theme('colors.eclipse-blue.light'),
+      inset 0 -4px 0 0 theme('colors.eclipse-blue.light'),
+      inset 0 4px 0 0 theme('colors.eclipse-blue.light');
+  }
+
+  .pixel-shadow {
+    box-shadow: 8px 8px 0 0 theme('colors.eclipse-blue.dark');
+  }
 }

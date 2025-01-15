@@ -1,7 +1,7 @@
-import { client } from "@/lib/sanity";
-import { PortableText } from "@portabletext/react";
-import { notFound } from "next/navigation";
-import type { PortableTextBlock } from "@portabletext/types";
+import { client } from '@/lib/sanity';
+import { PortableText } from '@portabletext/react';
+import { notFound } from 'next/navigation';
+import type { PortableTextBlock } from '@portabletext/types';
 
 interface DonationInfo {
   title: string;
@@ -38,9 +38,7 @@ export default async function DonatePage() {
           <li key={index}>{option}</li>
         ))}
       </ul>
-      <p className="mb-4">
-        For corporate sponsorship opportunities, please contact us directly.
-      </p>
+      <p className="mb-4">For corporate sponsorship opportunities, please contact us directly.</p>
       <a href={donationInfo.donationLink} className="btn btn-primary mr-4">
         Make a Donation
       </a>

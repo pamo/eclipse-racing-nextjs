@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { urlFor, SanityImageSource } from "@/lib/sanity";
-import { Card } from "@/components/Card";
-import { getColorClasses } from "@/utils/color";
+import Image from 'next/image';
+import { urlFor, SanityImageSource } from '@/lib/sanity';
+import { Card } from '@/components/Card';
+import { getColorClasses } from '@/utils/color';
 
 interface TeamMember {
   _id: string;
@@ -11,11 +11,7 @@ interface TeamMember {
   image?: SanityImageSource;
 }
 
-export default function TeamMembersList({
-  members,
-}: {
-  members: TeamMember[];
-}) {
+export default function TeamMembersList({ members }: { members: TeamMember[] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {members.map((member, index) => {
@@ -35,9 +31,7 @@ export default function TeamMembersList({
                 />
               </div>
             )}
-            <h2
-              className={`text-xl font-bold ${colorClasses.text} mb-2 text-center`}
-            >
+            <h2 className={`text-xl font-bold ${colorClasses.text} mb-2 text-center`}>
               {member.name}
             </h2>
             <p className={`${colorClasses.lightText} text-center mb-4`}>

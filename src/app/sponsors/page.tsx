@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { urlFor, SanityImageSource, client } from "@/lib/sanity";
-import { Card } from "@/components/Card";
-import { getColorClasses } from "@/utils/color";
-import { notFound } from "next/navigation";
+import Image from 'next/image';
+import { urlFor, SanityImageSource, client } from '@/lib/sanity';
+import { Card } from '@/components/Card';
+import { getColorClasses } from '@/utils/color';
+import { notFound } from 'next/navigation';
 
 interface Sponsor {
   _id: string;

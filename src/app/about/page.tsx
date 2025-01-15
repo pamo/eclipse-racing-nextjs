@@ -1,6 +1,6 @@
-import { client } from "@/lib/sanity";
-	import { notFound } from "next/navigation";
-import { PortableText } from "@portabletext/react";
+import { client } from '@/lib/sanity';
+import { notFound } from 'next/navigation';
+import { PortableText } from '@portabletext/react';
 
 async function getAboutPage() {
   return client.fetch(`
@@ -13,8 +13,7 @@ async function getAboutPage() {
 
 export default async function AboutPage() {
   const page = await getAboutPage();
-	if (!page) notFound();
-
+  if (!page) notFound();
 
   return (
     <div className="container mx-auto px-4 py-8">

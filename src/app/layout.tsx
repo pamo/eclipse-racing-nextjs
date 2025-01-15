@@ -1,9 +1,9 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import Link from "next/link";
-import { client } from "@/lib/sanity";
+import './globals.css';
+import { Inter } from 'next/font/google';
+import Link from 'next/link';
+import { client } from '@/lib/sanity';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 async function getSiteSettings() {
   return client.fetch(`
@@ -22,24 +22,15 @@ export async function generateMetadata() {
   };
 }
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const siteSettings = await getSiteSettings();
 
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} psychedelic-bg min-h-screen flex flex-col`}
-      >
+      <body className={`${inter.className} psychedelic-bg min-h-screen flex flex-col`}>
         <header className="bg-eclipse-blue-dark text-white p-4">
           <nav className="container mx-auto flex justify-between items-center">
-            <Link
-              href="/"
-              className="text-2xl font-bold text-eclipse-yellow-light"
-            >
+            <Link href="/" className="text-2xl font-bold text-eclipse-yellow-light">
               {siteSettings.title}
             </Link>
             <ul className="flex space-x-4">
@@ -54,10 +45,7 @@ export default async function RootLayout({
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/sponsors"
-                  className="hover:text-eclipse-pink-light"
-                >
+                <Link href="/sponsors" className="hover:text-eclipse-pink-light">
                   Sponsors
                 </Link>
               </li>
@@ -85,8 +73,7 @@ export default async function RootLayout({
         <footer className="bg-eclipse-blue-dark text-white p-4">
           <div className="container mx-auto text-center">
             <p>
-              &copy; {new Date().getFullYear()} {siteSettings.title}. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} {siteSettings.title}. All rights reserved.
             </p>
           </div>
         </footer>
