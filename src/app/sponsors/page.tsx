@@ -1,6 +1,7 @@
-import { client } from "@/lib/sanity";
 import Image from "next/image";
-import { urlFor, SanityImageSource } from "@/lib/sanity";
+import { urlFor, SanityImageSource, client } from "@/lib/sanity";
+import { Card } from "@/components/Card";
+import { getColorClasses } from "@/utils/color";
 import { notFound } from "next/navigation";
 
 interface Sponsor {
@@ -13,14 +14,14 @@ interface Sponsor {
 
 async function getSponsors(): Promise<Sponsor[]> {
   return client.fetch(`
-    *[_type == "sponsor"] | order(name asc) {
-      _id,
-      name,
-      website,
-      logo,
-      description
-    }
-  `);
+      *[_type == "sponsor"] | order(name asc) {
+        _id,
+        name,
+        website,
+        logo,
+        description
+      }
+    `);
 }
 
 export default async function SponsorsPage() {
@@ -28,36 +29,28 @@ export default async function SponsorsPage() {
   if (!sponsors) notFound();
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Our Sponsors</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sponsors.map((sponsor: Sponsor) => (
-          <div
-            key={sponsor._id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden"
-          >
-            <Image
-              src={urlFor(sponsor.logo).width(300).height(200).url()}
-              alt={sponsor.name}
-              width={300}
-              height={200}
-              className="w-full h-40 object-contain"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-bold">{sponsor.name}</h2>
-              <p className="mt-2">{sponsor.description}</p>
-              <a
-                href={sponsor.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline mt-2 inline-block"
-              >
-                Visit Website
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sponsors?.map((sponsor, index) => {
+        const colorClasses = getColorClasses(index);
+        return (
+          <Card key={sponsor._id} colorClasses={colorClasses}>
+            <a
+              href={sponsor.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-48 mb-4 overflow-hidden"
+            >
+              <Image
+                src={urlFor(sponsor.logo).width(600).height(400).url()}
+                alt={sponsor.name}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-contain transition-transform duration-300 hover:scale-105"
+              />
+            </a>
+          </Card>
+        );
+      })}
     </div>
   );
 }
