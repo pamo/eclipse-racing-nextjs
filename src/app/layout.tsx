@@ -31,40 +31,62 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <header className="bg-gray-800 text-white p-4">
+      <body
+        className={`${inter.className} psychedelic-bg min-h-screen flex flex-col`}
+      >
+        <header className="bg-eclipse-blue-dark text-white p-4">
           <nav className="container mx-auto flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold">
-              {siteSettings?.title}
+            <Link
+              href="/"
+              className="text-2xl font-bold text-eclipse-yellow-light"
+            >
+              {siteSettings.title}
             </Link>
             <ul className="flex space-x-4">
               <li>
-                <Link href="/about">About</Link>
+                <Link href="/about" className="hover:text-eclipse-pink-light">
+                  About
+                </Link>
               </li>
               <li>
-                <Link href="/team">Team</Link>
+                <Link href="/team" className="hover:text-eclipse-pink-light">
+                  Team
+                </Link>
               </li>
               <li>
-                <Link href="/sponsors">Sponsors</Link>
+                <Link
+                  href="/sponsors"
+                  className="hover:text-eclipse-pink-light"
+                >
+                  Sponsors
+                </Link>
               </li>
               <li>
-                <Link href="/join">Join</Link>
+                <Link href="/join" className="hover:text-eclipse-pink-light">
+                  Join
+                </Link>
               </li>
               <li>
-                <Link href="/donate">Donate</Link>
+                <Link href="/donate" className="hover:text-eclipse-pink-light">
+                  Donate
+                </Link>
               </li>
               <li>
-                <Link href="/contact">Contact</Link>
+                <Link href="/contact" className="hover:text-eclipse-pink-light">
+                  Contact
+                </Link>
               </li>
             </ul>
           </nav>
         </header>
-        <main>{children}</main>
-        <footer className="bg-gray-800 text-white p-4 mt-8">
+        <main className="flex-grow container mx-auto px-4 py-8 bg-white bg-opacity-90 my-8 rounded-lg shadow-lg">
+          {children}
+        </main>
+        <footer className="bg-eclipse-blue-dark text-white p-4">
           <div className="container mx-auto text-center">
             <p>
-              &copy; {new Date().getFullYear()} {siteSettings?.title}. All
-              rights reserved.
+              &copy; {new Date().getFullYear()} {siteSettings.title}. All rights
+              reserved.
             </p>
           </div>
         </footer>
