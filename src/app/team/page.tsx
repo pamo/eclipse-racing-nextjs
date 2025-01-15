@@ -24,7 +24,8 @@ async function getTeamMembers() {
   return client.fetch(`
     *[_type == "teamMember"] {
       _id,
-      name,
+      "name": firstName + " " + lastName,
+      firstNname,
       lastName,
       boardPosition,
       yearJoined,

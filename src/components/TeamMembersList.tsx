@@ -21,7 +21,7 @@ export default function TeamMembersList({
               >
                 <Image
                   src={urlFor(member.image).width(128).height(128).url()}
-                  alt={member.firstName}
+                  alt={member.name}
                   width={128}
                   height={128}
                   className="object-cover w-full h-full"
@@ -31,7 +31,7 @@ export default function TeamMembersList({
             <h2
               className={`text-xl font-bold ${colorClasses.text} mb-2 text-center`}
             >
-              {member.firstName}
+              {member.name}
             </h2>
             {member.boardPosition && (
               <p className={`${colorClasses.text} text-center mb-2 italic`}>

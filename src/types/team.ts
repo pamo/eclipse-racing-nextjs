@@ -11,6 +11,7 @@ export type BoardPosition = typeof BoardPositions[keyof typeof BoardPositions];
 
 export interface TeamMember {
 	_id: string;
+	name: string;
 	firstName: string;
 	lastName: string;
 	boardPosition?: BoardPosition;
