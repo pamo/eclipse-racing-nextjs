@@ -6,34 +6,48 @@ export interface ColorClasses {
 }
 
 export function getColorClasses(index: number): ColorClasses {
-  switch (index % 3) {
+  switch (index % 5) { // Changed to 5 to use all colors
     case 0:
       return {
-        border: 'border-eclipse-blue-dark',
-        shadow: 'bg-eclipse-blue-dark',
-        text: 'text-eclipse-blue-dark',
+        border: 'border-eclipse-blue',
+        shadow: 'bg-eclipse-blue',
+        text: 'text-eclipse-blue',
         lightText: 'text-eclipse-blue-light',
       };
     case 1:
       return {
-        border: 'border-eclipse-pink-dark',
-        shadow: 'bg-eclipse-pink-dark',
-        text: 'text-eclipse-pink-dark',
+        border: 'border-eclipse-pink',
+        shadow: 'bg-eclipse-pink',
+        text: 'text-eclipse-pink',
         lightText: 'text-eclipse-pink-light',
       };
     case 2:
       return {
-        border: 'border-eclipse-green-dark',
-        shadow: 'bg-eclipse-green-dark',
-        text: 'text-eclipse-green-dark',
+        border: 'border-eclipse-green',
+        shadow: 'bg-eclipse-green',
+        text: 'text-eclipse-green',
         lightText: 'text-eclipse-green-light',
+      };
+    case 3:
+      return {
+        border: 'border-eclipse-yellow',
+        shadow: 'bg-eclipse-yellow',
+        text: 'text-eclipse-yellow',
+        lightText: 'text-eclipse-yellow-light',
+      };
+    case 4:
+      return {
+        border: 'border-eclipse-orange',
+        shadow: 'bg-eclipse-orange',
+        text: 'text-eclipse-orange',
+        lightText: 'text-eclipse-orange-light',
       };
     default:
       return {
-        border: 'border-eclipse-yellow-dark',
-        shadow: 'bg-eclipse-yellow-dark',
-        text: 'text-eclipse-yellow-dark',
-        lightText: 'text-eclipse-yellow-light',
+        border: 'border-eclipse-blue',
+        shadow: 'bg-eclipse-blue',
+        text: 'text-eclipse-blue',
+        lightText: 'text-eclipse-blue-light',
       };
   }
 }

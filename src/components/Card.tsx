@@ -14,16 +14,17 @@ interface CardProps {
 
 export function Card({ colorClasses, children }: CardProps) {
   return (
-    <div
-      className={`bg-white rounded-lg border-2 relative transition-all duration-300 hover:translate-x-1 hover:translate-y-1 group
-      ${colorClasses.border}`}
-    >
-      {/* Solid shadow */}
+    <div className="relative h-full">
       <div
-        className={`absolute inset-0 ${colorClasses.shadow} rounded-lg transform translate-x-2 translate-y-2 -z-10`}
+        className={`absolute inset-0 ${colorClasses.shadow} rounded-lg transform translate-x-2 translate-y-2`}
       ></div>
 
-      <div className="bg-white p-6 rounded-lg">{children}</div>
+      <div
+        className={`relative z-10 bg-white rounded-lg border-2 h-full transition-all duration-300 hover:translate-x-1 hover:translate-y-1 group
+        ${colorClasses.border}`}
+      >
+        <div className="bg-white p-4 md:p-6 rounded-lg h-full">{children}</div>
+      </div>
     </div>
   );
 }

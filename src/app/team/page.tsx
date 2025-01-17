@@ -25,7 +25,7 @@ async function getTeamMembers() {
     *[_type == "teamMember"] {
       _id,
       "name": firstName + " " + lastName,
-      firstNname,
+      firstName,
       lastName,
       boardPosition,
       yearJoined,
