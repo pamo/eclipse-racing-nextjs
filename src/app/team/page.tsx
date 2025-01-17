@@ -51,24 +51,28 @@ export default async function TeamPage() {
     );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-eclipse-blue-dark text-center">
+    <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-8 max-w-7xl">
+      <h1 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-eclipse-blue-dark text-center">
         Our Team
       </h1>
 
-      <h2 className="text-3xl font-bold mb-6 text-eclipse-blue-dark">
-        Active Members
-      </h2>
-      <TeamMembersList members={activeMembers} />
-
-      {alumniMembers.length > 0 && (
-        <>
-          <h2 className="text-3xl font-bold my-8 text-eclipse-blue-dark">
-            Alumni
+      <div className="space-y-6 md:space-y-8">
+        <section>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-eclipse-blue-dark">
+            Active Members
           </h2>
-          <TeamMembersList members={alumniMembers} />
-        </>
-      )}
+          <TeamMembersList members={activeMembers} />
+        </section>
+
+        {alumniMembers.length > 0 && (
+          <section>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-eclipse-blue-dark">
+              Alumni
+            </h2>
+            <TeamMembersList members={alumniMembers} />
+          </section>
+        )}
+      </div>
     </div>
   );
 }
