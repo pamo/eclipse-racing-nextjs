@@ -32,12 +32,11 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} psychedelic-bg min-h-screen`}>
         <header className="bg-eclipse-blue-dark text-white sticky top-0 z-50">
           <Navigation siteTitle={siteSettings.title} />
         </header>
 
-        {/* Main Content */}
         <main className="min-h-screen">{children}</main>
 
         <footer className="bg-eclipse-blue-dark text-white py-8">
