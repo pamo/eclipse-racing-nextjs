@@ -1,16 +1,7 @@
 import { client } from '@/lib/sanity';
+import { ContactInfo, SocialMedia } from '@/types/contact';
 import { notFound } from 'next/navigation';
-interface SocialMedia {
-  platform: string;
-  url: string;
-}
 
-interface ContactInfo {
-  email: string;
-  phone: string;
-  address: string;
-  socialMedia: SocialMedia[];
-}
 
 async function getContactInfo(): Promise<ContactInfo | null> {
   return client.fetch(`

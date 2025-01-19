@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import { Navigation } from "@/components/Navigation";
 import { client } from "@/lib/sanity";
+import { ContactInfo, SocialMedia } from "@/types/contact";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +12,13 @@ async function getSiteSettings() {
     *[_type == "siteSettings"][0] {
       title,
       description
+    }
+  `);
+}
+async function getContactInfo(): Promise<ContactInfo | null> {
+  return client.fetch(`
+    *[_type == "contactInfo"][0] {
+      socialMedia
     }
   `);
 }
@@ -29,6 +37,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const siteSettings = await getSiteSettings();
+  const contactInfo = await getContactInfo();
 
   return (
     <html lang="en">
@@ -80,18 +89,11 @@ export default async function RootLayout({
               <div>
                 <h3 className="text-lg font-bold mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <a
-                    href="#"
-                    className="hover:text-eclipse-yellow-light transition-colors"
-                  >
-                    Instagram
+                {contactInfo?.socialMedia.map((social: SocialMedia, index: number) => (
+                  <a key={index} href={social.url} target="_blank">
+                    {social.platform}
                   </a>
-                  <a
-                    href="#"
-                    className="hover:text-eclipse-yellow-light transition-colors"
-                  >
-                    Strava
-                  </a>
+                ))}
                 </div>
               </div>
             </div>
