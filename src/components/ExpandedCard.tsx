@@ -125,7 +125,14 @@ export function ExpandedCard({
                             {member.disciplines.map((discipline) => (
                               <span
                                 key={discipline}
-                                className={`px-3 py-1 rounded-full text-sm ${colorClasses.border} bg-white`}
+                                className={`
+                                  px-3 py-1 rounded-full text-sm
+                                  border ${colorClasses.border}
+                                  ${colorClasses.text}
+                                  bg-white
+                                  shadow-sm
+                                  font-medium
+                                `}
                               >
                                 {discipline}
                               </span>
