@@ -5,6 +5,10 @@ export const BoardPositions = {
 	VICE_PRESIDENT: 'vicePresident',
 	SECRETARY: 'secretary',
 	TREASURER: 'treasurer',
+	RECRUITING: 'recruiting',
+	CAPTAIN: 'captain',
+	SOCIAL: 'social',
+	COMMUNITY: 'community'
 } as const;
 
 export type BoardPosition = typeof BoardPositions[keyof typeof BoardPositions];
@@ -31,6 +35,10 @@ export const boardPositionOrder: Record<BoardPosition, number> = {
 	[BoardPositions.VICE_PRESIDENT]: 2,
 	[BoardPositions.SECRETARY]: 3,
 	[BoardPositions.TREASURER]: 4,
+	[BoardPositions.RECRUITING]: 5,
+	[BoardPositions.CAPTAIN]: 6,
+	[BoardPositions.SOCIAL]: 7,
+	[BoardPositions.COMMUNITY]: 8,
 };
 
 // Function to get formatted board position title
@@ -44,6 +52,14 @@ export function getBoardPositionTitle(position: BoardPosition): string {
 			return 'Secretary';
 		case BoardPositions.TREASURER:
 			return 'Treasurer';
+		case BoardPositions.RECRUITING:
+			return 'New Member Coordinator';
+		case BoardPositions.CAPTAIN:
+			return 'Race Captain';
+		case BoardPositions.SOCIAL:
+			return 'Social Chair';
+		case BoardPositions.COMMUNITY:
+			return 'Community Outreach';
 		default:
 			return '';
 	}
