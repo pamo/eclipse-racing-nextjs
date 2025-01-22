@@ -16,6 +16,10 @@ export interface TeamMember {
 	lastName: string;
 	boardPosition?: BoardPosition;
 	yearJoined: number;
+	subtitle: string;
+	bucketListRide?: string;
+	favoriteRaceMemory?: string;
+	disciplines?: string[];
 	bio: string;
 	image?: SanityImageSource;
 	isActive: boolean;
