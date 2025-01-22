@@ -13,7 +13,7 @@ export default function TeamMembersList({
   members: TeamMember[];
   showExtraCard?: boolean;
 }) {
-  const [expandedMember, setExpandedMember] = useState<TeamMember | null>(null);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   return (
     <>
@@ -23,7 +23,7 @@ export default function TeamMembersList({
           return (
             <button
               key={member._id}
-              onClick={() => setExpandedMember(member)}
+              onClick={() => setSelectedMember(member)}
               className="text-left focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
             >
               <Card key={member._id} colorClasses={colorClasses}>
@@ -72,13 +72,18 @@ export default function TeamMembersList({
           </Card>
         )}
       </div>
-      {expandedMember && (
+      {selectedMember && (
         <ExpandedCard
-          member={expandedMember}
-          colorClasses={getColorClasses(
-            members.findIndex((m) => m._id === expandedMember._id),
-          )}
-          onClose={() => setExpandedMember(null)}
+          member={selectedMember!}
+          colorClasses={
+            selectedMember
+              ? getColorClasses(
+                  members.findIndex((m) => m._id === selectedMember._id),
+                )
+              : getColorClasses(0)
+          }
+          isOpen={!!selectedMember}
+          onClose={() => setSelectedMember(null)}
         />
       )}
     </>
