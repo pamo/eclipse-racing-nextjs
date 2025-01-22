@@ -2,6 +2,8 @@ import { client } from "@/lib/sanity";
 import TeamMembersList from "@/components/TeamMembersList";
 import { notFound } from "next/navigation";
 import { TeamMember, boardPositionOrder } from "@/types/team";
+import { Card } from "@/components/Card";
+import { getColorClasses } from "@/utils/color";
 
 function sortTeamMembers(members: TeamMember[]): TeamMember[] {
   return members.sort((a, b) => {
@@ -69,7 +71,7 @@ export default async function TeamPage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-eclipse-blue-dark">
               Alumni
             </h2>
-            <TeamMembersList members={alumniMembers} />
+            <TeamMembersList members={alumniMembers} showExtraCard />
           </section>
         )}
       </div>

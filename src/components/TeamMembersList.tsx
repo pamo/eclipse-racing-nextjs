@@ -5,8 +5,10 @@ import { Avatar } from "./Avatar";
 
 export default function TeamMembersList({
   members,
+  showExtraCard = false,
 }: {
   members: TeamMember[];
+  showExtraCard?: boolean;
 }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -45,6 +47,21 @@ export default function TeamMembersList({
           </Card>
         );
       })}
+      {showExtraCard && (
+        <Card colorClasses={getColorClasses(members.length)}>
+          <div className="flex flex-col items-center justify-center h-full min-h-[300px] p-6">
+            <h2
+              className={`text-2xl font-bold text-center mb-4 ${getColorClasses(members.length).text}`}
+            >
+              And Many More!
+            </h2>
+            <p className="text-center text-gray-600">
+              Eclipse Racing has been home to many amazing cyclists over the
+              years.
+            </p>
+          </div>
+        </Card>
+      )}
     </div>
   );
 }
