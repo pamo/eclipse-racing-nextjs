@@ -2,19 +2,11 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { Navigation } from "@/components/Navigation";
-import { client } from "@/lib/sanity";
+import { client, getSiteSettings } from "@/lib/sanity";
 import { ContactInfo, SocialMedia } from "@/types/contact";
 
 const inter = Inter({ subsets: ["latin"] });
 
-async function getSiteSettings() {
-  return client.fetch(`
-    *[_type == "siteSettings"][0] {
-      title,
-      description
-    }
-  `);
-}
 async function getContactInfo(): Promise<ContactInfo | null> {
   return client.fetch(`
     *[_type == "contactInfo"][0] {
@@ -43,7 +35,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${inter.className} psychedelic-bg min-h-screen`}>
         <header className="bg-eclipse-blue-dark text-white sticky top-0 z-50">
-          <Navigation siteTitle={siteSettings.title} />
+          <Navigation siteTitle={siteSettings.title} logo={siteSettings.logo} />
         </header>
 
         <main className="min-h-screen">{children}</main>

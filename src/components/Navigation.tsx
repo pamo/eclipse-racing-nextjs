@@ -1,20 +1,35 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 interface NavigationProps {
   siteTitle: string;
+  logo?: string;
 }
 
-export function Navigation({ siteTitle }: NavigationProps) {
+export function Navigation({ siteTitle, logo }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="container mx-auto px-4">
       <div className="flex items-center justify-between h-16">
-        {/* Logo/Home Link */}
-        <Link href="/" className="text-xl font-bold text-eclipse-yellow-light">
-          {siteTitle}
+        <Link
+          href="/"
+          className="text-xl font-bold text-eclipse-yellow-light flex"
+        >
+          {logo && (
+            <Image
+              src={logo}
+              alt={siteTitle}
+              width={40}
+              height={40}
+              className="mr-2"
+            />
+          )}
+          <span className="text-xl font-bold text-eclipse-yellow-light">
+            {siteTitle}
+          </span>
         </Link>
 
         {/* Hamburger Menu Button (Mobile) */}

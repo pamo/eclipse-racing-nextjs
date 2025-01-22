@@ -40,3 +40,13 @@ const builder = imageUrlBuilder(client);
 export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
+
+export async function getSiteSettings() {
+  return client.fetch(`
+    *[_type == "siteSettings"][0] {
+      title,
+      description,
+      "logo": logo.asset->url
+    }
+  `)
+}
