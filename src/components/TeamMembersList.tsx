@@ -1,8 +1,7 @@
-import Image from 'next/image';
-import { urlFor } from "@/lib/sanity";
 import { Card } from "@/components/Card";
 import { getColorClasses } from "@/utils/color";
 import { getBoardPositionTitle, TeamMember } from "@/types/team";
+import { Avatar } from "./Avatar";
 
 export default function TeamMembersList({
   members,
@@ -16,24 +15,16 @@ export default function TeamMembersList({
         return (
           <Card key={member._id} colorClasses={colorClasses}>
             <div className="flex flex-col items-center space-y-3 sm:space-y-4">
-              {member.image && (
-                <div
-                  className={`w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 shrink-0 overflow-hidden rounded-full border-4 ${colorClasses.border}`}
-                >
-                  <Image
-                    src={urlFor(member.image).width(128).height(128).url()}
-                    alt={member.name}
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full"
-                    priority={index < 6} // Prioritize loading for first 6 images
-                  />
-                </div>
-              )}
+              <Avatar
+                image={member.image}
+                firstName={member.firstName}
+                lastName={member.lastName}
+                colorClasses={colorClasses}
+                className="mb-3 sm:mb-4"
+                priority={index < 6}
+              />
               <div className="space-y-2 sm:space-y-3">
-                <h2
-                  className={`text-lg sm:text-xl font-bold ${colorClasses.text} text-center`}
-                >
+                <h2 className={`text-lg sm:text-xl font-bold text-center`}>
                   {member.name}
                 </h2>
                 {member.boardPosition && (
@@ -43,9 +34,7 @@ export default function TeamMembersList({
                     {getBoardPositionTitle(member.boardPosition)}
                   </p>
                 )}
-                <p
-                  className={`${colorClasses.lightText} text-sm sm:text-base text-center`}
-                >
+                <p className="text-sm sm:text-base text-center">
                   Joined in {member.yearJoined}
                 </p>
                 <p className="text-gray-600 text-sm sm:text-base leading-relaxed text-center mt-3 line-clamp-4 w-full">

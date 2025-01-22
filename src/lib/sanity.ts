@@ -1,12 +1,30 @@
 import { createClient } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
 
+export interface SanityImageHotspot {
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+}
+
+export interface SanityImageCrop {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+}
+
+export interface SanityImageAsset {
+  _ref: string;
+  _type: 'reference';
+}
+
 export interface SanityImageSource {
-  asset: {
-    _ref: string;
-    _type: 'reference';
-  };
   _type: 'image';
+  asset: SanityImageAsset;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
 }
 
 export const client = createClient({
