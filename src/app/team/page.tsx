@@ -2,8 +2,6 @@ import { client } from "@/lib/sanity";
 import TeamMembersList from "@/components/TeamMembersList";
 import { notFound } from "next/navigation";
 import { TeamMember, boardPositionOrder } from "@/types/team";
-import { Card } from "@/components/Card";
-import { getColorClasses } from "@/utils/color";
 
 function sortTeamMembers(members: TeamMember[]): TeamMember[] {
   return members.sort((a, b) => {
