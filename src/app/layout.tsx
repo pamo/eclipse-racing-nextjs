@@ -1,12 +1,13 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import Link from "next/link";
-import { Navigation } from "@/components/Navigation";
-import { client, getSiteSettings } from "@/lib/sanity";
-import { ContactInfo, SocialMedia } from "@/types/contact";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import './globals.css';
+import { Inter } from 'next/font/google';
+import Link from 'next/link';
+import { Navigation } from '@/components/Navigation';
+import { client, getSiteSettings } from '@/lib/sanity';
+import { ContactInfo, SocialMedia } from '@/types/contact';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Page } from '@/types/page';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 async function getContactInfo(): Promise<ContactInfo | null> {
   return client.fetch(`
@@ -16,6 +17,16 @@ async function getContactInfo(): Promise<ContactInfo | null> {
   `);
 }
 
+const pages: Page[] = [
+  { title: 'About', slug: 'about' },
+  { title: 'Team', slug: 'team' },
+  { title: 'Donate', slug: 'donate' },
+  { title: 'Sponsors', slug: 'sponsors' },
+  { title: 'Join', slug: 'join' },
+  { title: 'Contact', slug: 'contact' },
+  { title: 'Events', slug: 'events' },
+];
+
 export async function generateMetadata() {
   const siteSettings = await getSiteSettings();
   return {
@@ -24,11 +35,7 @@ export async function generateMetadata() {
   };
 }
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const siteSettings = await getSiteSettings();
   const contactInfo = await getContactInfo();
 
@@ -36,7 +43,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${inter.className} psychedelic-bg min-h-screen`}>
         <header className="bg-eclipse-blue-dark text-white sticky top-0 z-50">
-          <Navigation siteTitle={siteSettings.title} logo={siteSettings.logo} />
+          <Navigation siteTitle={siteSettings.title} logo={siteSettings.logo} pages={pages} />
         </header>
 
         <main className="min-h-screen">{children}</main>
@@ -78,21 +85,18 @@ export default async function RootLayout({
               <div>
                 <h3 className="text-lg font-bold mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  {contactInfo?.socialMedia.map(
-                    (social: SocialMedia, index: number) => (
-                      <a key={index} href={social.url} target="_blank">
-                        {social.platform}
-                      </a>
-                    ),
-                  )}
+                  {contactInfo?.socialMedia.map((social: SocialMedia, index: number) => (
+                    <a key={index} href={social.url} target="_blank">
+                      {social.platform}
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
 
             <div className="mt-8 pt-8 border-t border-white/10 text-center">
               <p>
-                &copy; {new Date().getFullYear()} {siteSettings.title}. All
-                rights reserved.
+                &copy; {new Date().getFullYear()} {siteSettings.title}. All rights reserved.
               </p>
             </div>
           </div>
