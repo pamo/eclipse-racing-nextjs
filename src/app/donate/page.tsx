@@ -2,6 +2,7 @@ import { client } from '@/lib/sanity';
 import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import type { PortableTextBlock } from '@portabletext/types';
+import { Card } from '@/components/Card';
 
 interface DonationInfo {
   title: string;
@@ -27,7 +28,7 @@ export default async function DonatePage() {
   if (!donationInfo) notFound();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <Card>
       <h1 className="text-3xl font-bold mb-6">{donationInfo.title}</h1>
       <div className="mb-4">
         <PortableText value={donationInfo.content} />
@@ -38,6 +39,6 @@ export default async function DonatePage() {
       <a href="/contact" className="btn btn-secondary">
         Contact for Sponsorship
       </a>
-    </div>
+    </Card>
   );
 }

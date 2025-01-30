@@ -1,8 +1,7 @@
 import { client } from '@/lib/sanity';
 import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
-import { Card } from "@/components/Card";
-import { getColorClasses } from "@/utils/color";
+import { Card } from '@/components/Card';
 
 async function getEventsPage() {
   return client.fetch(`
@@ -19,7 +18,7 @@ export default async function EventsPage() {
 
   return (
     <div className="container p-4">
-      <Card colorClasses={getColorClasses(2)}>
+      <Card>
         <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
         <PortableText value={page.content} />
       </Card>

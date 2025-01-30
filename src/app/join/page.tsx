@@ -2,6 +2,7 @@ import { client } from '@/lib/sanity';
 import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import type { PortableTextBlock } from '@portabletext/types';
+import { Card } from '@/components/Card';
 interface ApplicationInfo {
   title: string;
   content: PortableTextBlock[];
@@ -25,7 +26,7 @@ export default async function JoinPage() {
   if (!applicationInfo) notFound();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <Card>
       <h1 className="text-3xl font-bold mb-6">{applicationInfo.title}</h1>
       <div className="mb-4">
         <PortableText value={applicationInfo.content} />
@@ -39,6 +40,6 @@ export default async function JoinPage() {
       <a href={applicationInfo.applicationFormLink} className="btn btn-primary">
         Application Form
       </a>
-    </div>
+    </Card>
   );
 }

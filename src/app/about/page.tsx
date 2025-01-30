@@ -1,8 +1,8 @@
 import { client } from '@/lib/sanity';
 import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
-import { Card } from "@/components/Card";
-import { getColorClasses } from "@/utils/color";
+import { Card } from '@/components/Card';
+import { getColorClasses } from '@/utils/color';
 
 async function getAboutPage() {
   return client.fetch(`

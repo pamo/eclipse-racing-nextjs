@@ -1,3 +1,4 @@
+import { getColorClasses } from '@/utils/color';
 import React from 'react';
 
 export interface ColorClasses {
@@ -8,12 +9,12 @@ export interface ColorClasses {
 }
 
 interface CardProps {
-  colorClasses: ColorClasses;
   children: React.ReactNode;
+  colorClasses?: ColorClasses;
   className?: string;
 }
 
-export function Card({ colorClasses, children, className }: CardProps) {
+export function Card({ colorClasses = getColorClasses(Math.floor(Math.random() * 6)), children, className }: CardProps) {
   return (
     <div className="relative h-full">
       <div

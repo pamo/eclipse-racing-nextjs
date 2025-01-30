@@ -11,7 +11,7 @@ interface Sponsor {
   website: string;
   logo: SanityImageSource;
   description: string;
-  sponsorshipLevel: string
+  sponsorshipLevel: string;
 }
 
 async function getSponsors(): Promise<Sponsor[]> {
@@ -40,8 +40,6 @@ function sortSponsors(sponsors: Sponsor[]): Sponsor[] {
     return a.name.localeCompare(b.name);
   });
 }
-
-
 
 function SponsorCard({ sponsor, level }: { sponsor: Sponsor; level: string }) {
   const colorClasses = getSponsorColorClasses(level);
@@ -73,21 +71,21 @@ function getSponsorColorClasses(level: string): ColorClasses {
         border: 'border-slate-300',
         shadow: 'bg-slate-200',
         text: 'text-slate-900',
-        lightText: 'text-slate-600'
+        lightText: 'text-slate-600',
       };
     case 'gold':
       return {
         border: 'border-amber-300',
         shadow: 'bg-amber-200',
         text: 'text-amber-900',
-        lightText: 'text-amber-600'
+        lightText: 'text-amber-600',
       };
     case 'silver':
       return {
         border: 'border-gray-300',
         shadow: 'bg-gray-200',
         text: 'text-gray-900',
-        lightText: 'text-gray-600'
+        lightText: 'text-gray-600',
       };
     case 'bronze':
     default:
@@ -95,7 +93,7 @@ function getSponsorColorClasses(level: string): ColorClasses {
         border: 'border-orange-300',
         shadow: 'bg-orange-200',
         text: 'text-orange-900',
-        lightText: 'text-orange-600'
+        lightText: 'text-orange-600',
       };
   }
 }
@@ -133,12 +131,15 @@ export default async function SponsorsPage() {
   if (!sponsors) notFound();
   const sortedSponsors = sortSponsors(sponsors);
 
-  const sponsorsByLevel = sortedSponsors.reduce((acc, sponsor) => {
-    const level = sponsor.sponsorshipLevel?.toLowerCase() || 'bronze';
-    if (!acc[level]) acc[level] = [];
-    acc[level].push(sponsor);
-    return acc;
-  }, {} as Record<string, Sponsor[]>);
+  const sponsorsByLevel = sortedSponsors.reduce(
+    (acc, sponsor) => {
+      const level = sponsor.sponsorshipLevel?.toLowerCase() || 'bronze';
+      if (!acc[level]) acc[level] = [];
+      acc[level].push(sponsor);
+      return acc;
+    },
+    {} as Record<string, Sponsor[]>
+  );
 
   return (
     <div className="space-y-8 p-4">

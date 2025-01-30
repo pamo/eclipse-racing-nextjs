@@ -1,7 +1,7 @@
-import { client } from "@/lib/sanity";
-import TeamMembersList from "@/components/TeamMembersList";
-import { notFound } from "next/navigation";
-import { TeamMember, boardPositionOrder } from "@/types/team";
+import { client } from '@/lib/sanity';
+import TeamMembersList from '@/components/TeamMembersList';
+import { notFound } from 'next/navigation';
+import { TeamMember, boardPositionOrder } from '@/types/team';
 
 function sortTeamMembers(members: TeamMember[]): TeamMember[] {
   return members.sort((a, b) => {
@@ -44,14 +44,10 @@ export default async function TeamPage() {
 
   if (!allMembers || allMembers.length === 0) notFound();
 
-  const activeMembers = sortTeamMembers(
-    allMembers.filter((member: TeamMember) => member.isActive),
-  );
+  const activeMembers = sortTeamMembers(allMembers.filter((member: TeamMember) => member.isActive));
   const alumniMembers = allMembers
     .filter((member: TeamMember) => !member.isActive)
-    .sort((a: TeamMember, b: TeamMember) =>
-      a.lastName.localeCompare(b.lastName),
-    );
+    .sort((a: TeamMember, b: TeamMember) => a.lastName.localeCompare(b.lastName));
 
   return (
     <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-8 max-w-7xl">

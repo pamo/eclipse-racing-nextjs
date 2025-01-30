@@ -1,6 +1,6 @@
-import { Card } from "@/components/Card";
-import { getSiteSettings } from "@/lib/sanity";
-import { getColorClasses } from "@/utils/color";
+import { Card } from '@/components/Card';
+import { getSiteSettings } from '@/lib/sanity';
+import { getColorClasses } from '@/utils/color';
 
 export default async function Home() {
   const siteSettings = await getSiteSettings();
