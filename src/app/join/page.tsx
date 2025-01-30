@@ -30,13 +30,12 @@ export default async function JoinPage() {
       <div className="mb-4">
         <PortableText value={applicationInfo.content} />
       </div>
-      <h2 className="text-2xl font-bold mt-6 mb-4">How to Join</h2>
+      <h2 className="text-2xl font-bold mt-6 mb-4">Steps to Apply</h2>
       <ol className="list-decimal list-inside mb-4">
         {applicationInfo.steps.map((step: string, index: number) => (
           <li key={index}>{step}</li>
         ))}
       </ol>
-      <p className="mb-4">Ready to take the next step? Fill out our application form:</p>
       <a href={applicationInfo.applicationFormLink} className="btn btn-primary">
         Application Form
       </a>
