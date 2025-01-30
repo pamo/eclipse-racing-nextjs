@@ -26,20 +26,22 @@ export default async function JoinPage() {
   if (!applicationInfo) notFound();
 
   return (
-    <Card>
-      <h1 className="text-3xl font-bold mb-6">{applicationInfo.title}</h1>
-      <div className="mb-4">
-        <PortableText value={applicationInfo.content} />
-      </div>
-      <h2 className="text-2xl font-bold mt-6 mb-4">Steps to Apply</h2>
-      <ol className="list-decimal list-inside mb-4">
-        {applicationInfo.steps.map((step: string, index: number) => (
-          <li key={index}>{step}</li>
-        ))}
-      </ol>
-      <a href={applicationInfo.applicationFormLink} className="btn btn-primary">
-        Application Form
-      </a>
-    </Card>
+    <div className="container p-4">
+      <Card>
+        <h1 className="text-3xl font-bold mb-6">{applicationInfo.title}</h1>
+        <div className="mb-4">
+          <PortableText value={applicationInfo.content} />
+        </div>
+        <h2 className="text-2xl font-bold mt-6 mb-4">Steps to Apply</h2>
+        <ol className="list-decimal list-inside mb-4">
+          {applicationInfo.steps.map((step: string, index: number) => (
+            <li key={index}>{step}</li>
+          ))}
+        </ol>
+        <a href={applicationInfo.applicationFormLink} className="btn btn-primary">
+          Application Form
+        </a>
+      </Card>
+    </div>
   );
 }

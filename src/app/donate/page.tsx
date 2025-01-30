@@ -28,17 +28,19 @@ export default async function DonatePage() {
   if (!donationInfo) notFound();
 
   return (
-    <Card>
-      <h1 className="text-3xl font-bold mb-6">{donationInfo.title}</h1>
-      <div className="mb-4">
-        <PortableText value={donationInfo.content} />
-      </div>
-      <a href={donationInfo.donationLink} className="btn btn-primary mr-4">
-        Make a Donation
-      </a>
-      <a href="/contact" className="btn btn-secondary">
-        Contact for Sponsorship
-      </a>
-    </Card>
+    <div className="container p-4">
+      <Card>
+        <h1 className="text-3xl font-bold mb-6">{donationInfo.title}</h1>
+        <div className="mb-4">
+          <PortableText value={donationInfo.content} />
+        </div>
+        <a href={donationInfo.donationLink} className="btn btn-primary mr-4">
+          Make a Donation
+        </a>
+        <a href="/contact" className="btn btn-secondary">
+          Contact for Sponsorship
+        </a>
+      </Card>
+    </div>
   );
 }
