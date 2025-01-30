@@ -32,13 +32,6 @@ export default async function DonatePage() {
       <div className="mb-4">
         <PortableText value={donationInfo.content} />
       </div>
-      <h2 className="text-2xl font-bold mt-6 mb-4">Donation Options</h2>
-      <ul className="list-disc list-inside mb-4">
-        {donationInfo.donationOptions.map((option: string, index: number) => (
-          <li key={index}>{option}</li>
-        ))}
-      </ul>
-      <p className="mb-4">For corporate sponsorship opportunities, please contact us directly.</p>
       <a href={donationInfo.donationLink} className="btn btn-primary mr-4">
         Make a Donation
       </a>
