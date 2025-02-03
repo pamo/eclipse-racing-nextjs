@@ -32,8 +32,7 @@ export function Navigation({ siteTitle, logo, pages }: NavigationProps) {
     <nav className="container mx-auto px-4">
       <div className="flex items-center justify-between h-16">
         <Link href="/" className="text-xl font-bold text-eclipse-yellow-light flex">
-          {logo && <Image src={logo} alt={siteTitle} width={40} height={40} className="mr-2" />}
-          <span className="text-xl font-bold text-eclipse-yellow-light">{siteTitle}</span>
+          {logo ? <Image src={logo} alt={siteTitle} width={100} height={48} className="m-2" /> :  <span className="text-xl font-bold text-eclipse-yellow-light">{siteTitle}</span>}
         </Link>
 
         {/* Hamburger Menu Button (Mobile) */}
