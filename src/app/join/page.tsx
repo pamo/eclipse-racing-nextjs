@@ -38,7 +38,7 @@ export default async function JoinPage() {
             <li key={index}>{step}</li>
           ))}
         </ol>
-        <a href={applicationInfo.applicationFormLink} className="btn btn-primary">
+        <a href={applicationInfo.applicationFormLink} className="btn outline outline-3 outline-offset-2 outline-solid outline-eclipse-pink hover:outline-eclipse-pink-dark bg-eclipse-pink hover:bg-eclipse-pink-dark text-white mr-4">
           Application Form
         </a>
       </Card>

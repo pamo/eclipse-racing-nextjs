@@ -22,6 +22,11 @@ const colors = Object.fromEntries(
   ])
 );
 
+const buttonSafelist = ECLIPSE_COLORS.flatMap(color => [
+  `bg-eclipse-${color}`,
+  `hover:bg-eclipse-${color}-dark`,
+  `text-white`
+]);
 const safelistPatterns = [
   // Basic utility patterns
   new RegExp(`^(${UTILITY_PREFIXES.join('|')})-eclipse-(${ECLIPSE_COLORS.join('|')})(-light|-dark)?$`),
@@ -68,6 +73,8 @@ module.exports = {
       pattern: /^eclipse-(blue|pink|green|yellow|orange)(-light|-dark)?$/,
       variants: ['hover', 'group-hover'],
     },
+    ...buttonSafelist,
   ],
-  plugins: [],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require('@tailwindcss/typography')],
 };

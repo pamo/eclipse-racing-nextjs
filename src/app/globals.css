@@ -42,3 +42,16 @@ body {
     @apply shadow-[8px_8px_0_0_theme(colors.eclipse-blue.dark)];
   }
 }
+
+@layer base {
+  p {
+    a {
+      @apply text-eclipse-blue transition-colors duration-1000;
+    }
+
+    a:hover {
+      @apply text-eclipse-blue-dark;
+      text-decoration: underline;
+    }
+  }
+}

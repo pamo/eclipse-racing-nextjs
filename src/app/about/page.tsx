@@ -21,7 +21,9 @@ export default async function AboutPage() {
     <div className="container p-4">
       <Card colorClasses={getColorClasses(2)}>
         <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
-        <PortableText value={page.content} />
+        <div className="prose">
+          <PortableText value={page.content} />
+        </div>
       </Card>
     </div>
   );
