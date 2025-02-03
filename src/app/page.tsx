@@ -1,16 +1,38 @@
 import { Card } from '@/components/Card';
 import { getSiteSettings } from '@/lib/sanity';
 import { getColorClasses } from '@/utils/color';
+import { PortableText, SanityImageAssetDocument } from 'next-sanity';
+import Image from 'next/image';
+import { urlFor } from '@/lib/sanity';
+import { getImageDimensions } from '@sanity/asset-utils';
 
+const components = {
+  types: {
+    image: ({ value }: { value: SanityImageAssetDocument }) => {
+      const { width, height } = getImageDimensions(value);
+      return (
+        <Image
+          src={urlFor(value.asset).fit('max').url()}
+          alt="Photo of the team"
+          width={width}
+          height={height}
+          style={{
+            aspectRatio: width / height,
+          }}
+        />
+      );
+    },
+  },
+};
 export default async function Home() {
   const siteSettings = await getSiteSettings();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="min-h-screen mx-auto p-4 prose">
       <Card colorClasses={getColorClasses(1)}>
-        <p>{siteSettings.description}</p>
-        <p>{siteSettings.content}</p>
-        </Card>
+        <h1>{siteSettings.description}</h1>
+        <PortableText value={siteSettings.content} components={components} />
+      </Card>
     </main>
   );
 }
