@@ -26,7 +26,7 @@ export default async function JoinPage() {
   if (!applicationInfo) notFound();
 
   return (
-    <div className="container p-4">
+    <div className="container mx-auto p-4">
       <Card>
         <h1 className="text-3xl font-bold mb-6">{applicationInfo.title}</h1>
         <div className="mb-4">
@@ -38,7 +38,10 @@ export default async function JoinPage() {
             <li key={index}>{step}</li>
           ))}
         </ol>
-        <a href={applicationInfo.applicationFormLink} className="btn outline outline-3 outline-offset-2 outline-solid outline-eclipse-pink hover:outline-eclipse-pink-dark bg-eclipse-pink hover:bg-eclipse-pink-dark text-white mr-4">
+        <a
+          href={applicationInfo.applicationFormLink}
+          className="btn outline outline-3 outline-offset-2 outline-solid outline-eclipse-pink hover:outline-eclipse-pink-dark bg-eclipse-pink hover:bg-eclipse-pink-dark text-white mr-4"
+        >
           Application Form
         </a>
       </Card>

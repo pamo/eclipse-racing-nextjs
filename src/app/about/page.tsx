@@ -18,7 +18,7 @@ export default async function AboutPage() {
   if (!page) notFound();
 
   return (
-    <div className="container p-4">
+    <div className="container mx-auto p-4">
       <Card colorClasses={getColorClasses(2)}>
         <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
         <div className="prose">

@@ -17,7 +17,7 @@ export default async function EventsPage() {
   if (!page) notFound();
 
   return (
-    <div className="container p-4">
+    <div className="container mx-auto p-4">
       <Card>
         <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
         <PortableText value={page.content} />
