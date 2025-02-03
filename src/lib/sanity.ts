@@ -46,6 +46,7 @@ export async function getSiteSettings() {
     *[_type == "siteSettings"][0] {
       title,
       description,
+      content,
       "logo": logo.asset->url
     }
   `)

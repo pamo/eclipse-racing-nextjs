@@ -7,7 +7,10 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <Card colorClasses={getColorClasses(1)}>{siteSettings.description}</Card>
+      <Card colorClasses={getColorClasses(1)}>
+        <p>{siteSettings.description}</p>
+        <p>{siteSettings.content}</p>
+        </Card>
     </main>
   );
 }
