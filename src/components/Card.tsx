@@ -24,7 +24,7 @@ export function Card({ colorClasses = getColorClasses(Math.floor(Math.random() *
       <div
         className={`relative z-10 bg-white rounded-lg border-2 h-full transition-all duration-300 hover:translate-x-1 hover:translate-y-1 group
         ${colorClasses.border}
-         ${className}`}
+         ${className ? className: ''}`}
       >
         <div className="bg-white p-4 md:p-6 rounded-lg h-full">{children}</div>
       </div>

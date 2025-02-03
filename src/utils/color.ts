@@ -6,7 +6,7 @@ export interface ColorClasses {
 }
 
 export function getColorClasses(index: number): ColorClasses {
-  switch (index % 5) { // Changed to 5 to use all colors
+  switch (index % 5) {
     case 0:
       return {
         border: 'border-eclipse-pink',
