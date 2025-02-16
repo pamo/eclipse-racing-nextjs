@@ -9,9 +9,13 @@ const slackClient = new WebClient(slackToken);
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
+    const quotedMessage = message
+      .split('\n')
+      .map((line: string) => `> ${line}`)
+      .join('\n');
     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
       'Hello from Eclipse Racing'
-    )}&body=${encodeURIComponent(`Hi ${name},\n\nThank you for your message!\n\n">> ${message}"`)}`;
+    )}&body=${encodeURIComponent(`Hi ${name},\n\nThank you for your message!\n\n${quotedMessage}`)}`;
 
     try {
       await slackClient.chat.postMessage({
@@ -22,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             type: 'section',
             text: {
               type: 'mrkdwn',
-              text: `*Message from ${name} (<mailto:${email}|${email}>):*\n\n${message}\n\n[${mailtoLink}|Reply via Email>]`,
+              text: `*Message from ${name} (<mailto:${email}|${email}>):*\n\n${quotedMessage}\n\n[<${mailtoLink}|Reply via Email>]`,
             },
           },
         ],
