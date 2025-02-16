@@ -3,6 +3,7 @@ import { client } from '@/lib/sanity';
 import { ContactInfo, SocialMedia } from '@/types/contact';
 import { getColorClasses } from '@/utils/color';
 import { notFound } from 'next/navigation';
+import ContactForm from './components/ContactForm';
 
 async function getContactInfo(): Promise<ContactInfo | null> {
   return client.fetch(`
@@ -23,6 +24,7 @@ export default async function ContactPage() {
       <Card colorClasses={getColorClasses(3)}>
         <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
         Have questions or want to get in touch? We&apos;d love to hear from you!
+        <ContactForm />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h2 className="text-2xl font-bold mt-6 mb-4">Follow Us</h2>
