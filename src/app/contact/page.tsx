@@ -19,12 +19,10 @@ export default async function ContactPage() {
   const contactInfo = await getContactInfo();
   if (!contactInfo) notFound();
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 prose">
       <Card colorClasses={getColorClasses(3)}>
         <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
-        <p className="mb-4">
-          Have questions or want to get in touch? We&apos;d love to hear from you!
-        </p>
+        Have questions or want to get in touch? We&apos;d love to hear from you!
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h2 className="text-2xl font-bold mt-6 mb-4">Follow Us</h2>

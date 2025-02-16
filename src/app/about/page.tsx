@@ -18,12 +18,11 @@ export default async function AboutPage() {
   if (!page) notFound();
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="min-h-screen mx-auto p-4 prose">
       <Card colorClasses={getColorClasses(2)}>
         <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
-        <div className="prose">
-          <PortableText value={page.content} />
-        </div>
+
+        <PortableText value={page.content} />
       </Card>
     </div>
   );

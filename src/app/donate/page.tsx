@@ -28,12 +28,12 @@ export default async function DonatePage() {
   if (!donationInfo) notFound();
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 prose">
       <Card>
         <h1 className="text-3xl font-bold mb-6">{donationInfo.title}</h1>
-        <div className="mb-4 prose">
-          <PortableText value={donationInfo.content} />
-        </div>
+
+        <PortableText value={donationInfo.content} />
+
         <a
           href={donationInfo.donationLink}
           className="btn outline outline-3 outline-offset-2 outline-solid outline-eclipse-blue hover:outline-eclipse-blue-dark bg-eclipse-blue hover:bg-eclipse-blue-dark text-white mr-4"
