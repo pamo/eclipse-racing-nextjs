@@ -53,12 +53,14 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      {isSubmitSuccessful && (
-        <p className="text-green-500">Your message has been sent successfully!</p>
-      )}
-      {submitError && <p className="text-red-500">{submitError}</p>}
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+        {isSubmitSuccessful && (
+          <p className="text-green-500">Your message has been sent successfully!</p>
+        )}
+        {submitError && <p className="text-red-500 ">{submitError}</p>}
+      </div>
+      <div>
+        <label htmlFor="name" className="block text-sm font-bold text-gray-700">
           Name
         </label>
         <input
@@ -70,7 +72,7 @@ export default function ContactForm() {
         {errors.name && <p className="text-red-500">{errors.name.message}</p>}
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="email" className="block text-sm font-bold text-gray-700">
           Email
         </label>
         <input
@@ -82,7 +84,7 @@ export default function ContactForm() {
         {errors.email && <p className="text-red-500">{errors.email.message}</p>}
       </div>
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="message" className="block text-sm font-bold text-gray-700">
           Message
         </label>
         <textarea
