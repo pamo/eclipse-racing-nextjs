@@ -10,18 +10,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	if (req.method === 'POST') {
 		const { name, email, message } = req.body;
 		const mailtoLink = `mailto:${email}?subject=Reply to your message&body=${encodeURIComponent(
-			`Hi ${name},\n\nThank you for your message!\n\n">> ${message}"\n\n`
+			`Hi ${name},\n\nThank you for your message!\n\n">> ${message}"\n\nBest regards,`
 		)}`;
 
 		try {
 			await slackClient.chat.postMessage({
 				channel: slackChannelId!,
+				text: `Message from ${name} (${email}): ${message}`,
 				blocks: [
 					{
 						type: 'section',
 						text: {
 							type: 'mrkdwn',
-							text: `*Message from ${name} (${email}):*\n\n${message}`,
+							text: `*Message from ${name} (<mailto:${email}|${email}>):*\n\n${message}`,
 						},
 					},
 					{
@@ -34,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 									text: 'Reply via Email',
 								},
 								url: mailtoLink,
-								action_id: 'button-action',
+								action_id: 'repy_via_email',
 							},
 						],
 					},
