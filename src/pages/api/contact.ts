@@ -9,8 +9,9 @@ const slackClient = new WebClient(slackToken);
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method === 'POST') {
 		const { name, email, message } = req.body;
-		const mailtoLink = `mailto:${email}?subject=Reply to your message&body=${encodeURIComponent(
-			`Hi ${name},\n\nThank you for your message!\n\n">> ${message}"\n\nBest regards,`
+		const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+			'Hello from Eclipse Racing')}&body=${encodeURIComponent(
+				`Hi ${name},\n\nThank you for your message!\n\n">> ${message}"`
 		)}`;
 
 		try {
@@ -22,22 +23,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 						type: 'section',
 						text: {
 							type: 'mrkdwn',
-							text: `*Message from ${name} (<mailto:${email}|${email}>):*\n\n${message}`,
+							text: `*Message from ${name} (<mailto:${email}|${email}>):*\n\n${message}\n\n[${mailtoLink}|Reply via Email>]`,
 						},
-					},
-					{
-						type: 'actions',
-						elements: [
-							{
-								type: 'button',
-								text: {
-									type: 'plain_text',
-									text: 'Reply via Email',
-								},
-								url: mailtoLink,
-								action_id: 'repy_via_email',
-							},
-						],
 					},
 				],
 			});
