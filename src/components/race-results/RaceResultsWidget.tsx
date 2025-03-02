@@ -7,8 +7,8 @@ export default async function RaceResultsWidget() {
   // Fetch the initial data server-side
   const initialData = await getRaceResults(1, 10);
   return (
-    <div className="race-results-widget bg-white">
-      <h2 className="text-xl font-semibold">Recent Race Results</h2>
+    <div className="race-results-widget">
+      <h2 className="m-0">Recent Race Results</h2>
 
       <Suspense fallback={<Loading />}>
         <RaceResults initialResults={initialData} initialPage={1} />

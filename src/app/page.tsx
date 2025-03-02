@@ -29,10 +29,12 @@ export default async function Home() {
   const siteSettings = await getSiteSettings();
 
   return (
-    <main className="prose mx-auto min-h-screen min-w-full p-4">
-      <Card colorClasses={getColorClasses(1)}>
+    <main className="prose mx-auto grid min-h-screen min-w-full grid-cols-1 gap-4 p-4 lg:grid-cols-2">
+      <Card colorClasses={getColorClasses(1)} className="col-span-1">
         <h1>{siteSettings.description}</h1>
         <PortableText value={siteSettings.content} components={components} />
+      </Card>
+      <Card className="col-span-1">
         <RaceResultsWidget />
       </Card>
     </main>
