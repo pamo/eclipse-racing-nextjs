@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import type { PortableTextBlock } from '@portabletext/types';
 import { Card } from '@/components/Card';
+import { PushLink } from '@/components/PushButton';
 interface ApplicationInfo {
   title: string;
   content: PortableTextBlock[];
@@ -36,12 +37,12 @@ export default async function JoinPage() {
             <li key={index}>{step}</li>
           ))}
         </ol>
-        <a
+        <PushLink
           href={applicationInfo.applicationFormLink}
-          className="btn outline-3 outline-solid mr-4 bg-eclipse-pink text-white outline outline-offset-2 outline-eclipse-pink hover:bg-eclipse-pink-dark hover:outline-eclipse-pink-dark"
+          className="bg-eclipse-pink hover:bg-eclipse-pink-dark"
         >
           Application Form
-        </a>
+        </PushLink>
       </Card>
     </div>
   );

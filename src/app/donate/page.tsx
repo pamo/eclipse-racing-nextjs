@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import type { PortableTextBlock } from '@portabletext/types';
 import { Card } from '@/components/Card';
+import { PushLink } from '@/components/PushButton';
 
 interface DonationInfo {
   title: string;
@@ -35,18 +36,18 @@ export default async function DonatePage() {
         <PortableText value={donationInfo.content} />
 
         <div className="flex flex-col sm:flex-row sm:space-x-4">
-          <a
+          <PushLink
             href={donationInfo.donationLink}
-            className="btn outline-3 outline-solid mb-4 block bg-eclipse-blue text-white outline outline-offset-2 outline-eclipse-blue hover:bg-eclipse-blue-dark hover:outline-eclipse-blue-dark sm:mb-0 sm:inline-block"
+            className="bg-eclipse-blue text-white hover:bg-eclipse-blue-dark sm:mb-0 sm:inline-block"
           >
             Make a Donation
-          </a>
-          <a
+          </PushLink>
+          <PushLink
             href="/contact"
-            className="btn outline-3 outline-solid block bg-eclipse-green outline outline-offset-2 outline-eclipse-green hover:bg-eclipse-green-dark hover:outline-eclipse-green-dark sm:inline-block"
+            className="bg-eclipse-green hover:bg-eclipse-green-dark sm:mb-0 sm:inline-block"
           >
             Contact for Sponsorship
-          </a>
+          </PushLink>
         </div>
       </Card>
     </div>

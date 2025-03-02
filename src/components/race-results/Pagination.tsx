@@ -1,5 +1,7 @@
 'use client';
 
+import { PushButton } from '../PushButton';
+
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
@@ -31,60 +33,57 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
     return null;
   }
 
-const buttonStyles =
-  'relative px-4 py-1 text-black font-bold text-lg rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-shadow disabled:opacity-50 disabled:cursor-not-allowed';
-return (
-  <div className="mt-4 flex items-center justify-center space-x-2">
-    <button
-      onClick={() => onPageChange(1)}
-      disabled={currentPage === 1}
-      className={`${buttonStyles} hover:bg-gray-50`}
-      aria-label="First page"
-    >
-      &laquo;
-    </button>
-
-    <button
-      onClick={() => onPageChange(currentPage - 1)}
-      disabled={currentPage === 1}
-      className={`${buttonStyles} hover:bg-gray-50`}
-      // className="rounded border bg-white px-3 py-1 text-gray-600 disabled:cursor-not-allowed disabled:opacity-50"
-      aria-label="Previous page"
-    >
-      &lsaquo;
-    </button>
-
-    {getPageNumbers().map((pageNumber) => (
-      <button
-        key={pageNumber}
-        onClick={() => pageNumber !== currentPage && onPageChange(pageNumber)}
-        className={`${buttonStyles} ${
-          pageNumber === currentPage
-            ? 'bg-eclipse-green hover:bg-eclipse-green-light'
-            : 'text-gray-600 hover:bg-gray-50'
-        }`}
+  return (
+    <div className="mt-4 flex items-center justify-center space-x-2">
+      <PushButton
+        onClick={() => onPageChange(1)}
+        disabled={currentPage === 1}
+        className="hover:bg-gray-50"
+        aria-label="First page"
       >
-        {pageNumber}
-      </button>
-    ))}
+        &laquo;
+      </PushButton>
 
-    <button
-      onClick={() => onPageChange(currentPage + 1)}
-      disabled={currentPage === totalPages}
-      className={`${buttonStyles} hover:bg-gray-50`}
-      aria-label="Next page"
-    >
-      &rsaquo;
-    </button>
+      <PushButton
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="hover:bg-gray-50"
+        aria-label="Previous page"
+      >
+        &lsaquo;
+      </PushButton>
 
-    <button
-      onClick={() => onPageChange(totalPages)}
-      disabled={currentPage === totalPages}
-      className={`${buttonStyles} hover:bg-gray-50`}
-      aria-label="Last page"
-    >
-      &raquo;
-    </button>
-  </div>
-);
+      {getPageNumbers().map((pageNumber) => (
+        <PushButton
+          key={pageNumber}
+          onClick={() => pageNumber !== currentPage && onPageChange(pageNumber)}
+          className={`${
+            pageNumber === currentPage
+              ? 'bg-eclipse-green hover:bg-eclipse-green-light'
+              : 'text-gray-600 hover:bg-gray-50'
+          }`}
+        >
+          {pageNumber}
+        </PushButton>
+      ))}
+
+      <PushButton
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="hover:bg-gray-50"
+        aria-label="Next page"
+      >
+        &rsaquo;
+      </PushButton>
+
+      <PushButton
+        onClick={() => onPageChange(totalPages)}
+        disabled={currentPage === totalPages}
+        className="hover:bg-gray-50"
+        aria-label="Last page"
+      >
+        &raquo;
+      </PushButton>
+    </div>
+  );
 }
