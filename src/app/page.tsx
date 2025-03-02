@@ -5,6 +5,7 @@ import { PortableText, SanityImageAssetDocument } from 'next-sanity';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity';
 import { getImageDimensions } from '@sanity/asset-utils';
+import RaceResultsWidget from '@/components/race-results/RaceResultsWidget';
 
 const components = {
   types: {
@@ -28,10 +29,11 @@ export default async function Home() {
   const siteSettings = await getSiteSettings();
 
   return (
-    <main className="min-h-screen mx-auto p-4 prose">
+    <main className="min-h-screen mx-auto p-4 prose min-w-full">
       <Card colorClasses={getColorClasses(1)}>
         <h1>{siteSettings.description}</h1>
         <PortableText value={siteSettings.content} components={components} />
+        <RaceResultsWidget />
       </Card>
     </main>
   );
