@@ -98,7 +98,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isProcessing}
-          className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="relative rounded-full border-2 border-black bg-eclipse-orange px-4 py-1 text-lg font-bold text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow hover:bg-eclipse-orange-light active:shadow-none"
         >
           {isProcessing ? 'Submitting...' : 'Submit'}
         </button>
