@@ -49,5 +49,5 @@ export async function getSiteSettings() {
       content,
       "logo": logo.asset->url
     }
-  `)
+  `);
 }

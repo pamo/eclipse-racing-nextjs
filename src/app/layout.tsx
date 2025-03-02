@@ -42,22 +42,22 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={`${inter.className} psychedelic-bg min-h-screen`}>
-        <header className="bg-eclipse-blue-dark text-white sticky top-0 z-50">
+        <header className="sticky top-0 z-50 bg-eclipse-blue-dark text-white">
           <Navigation siteTitle={siteSettings.title} logo={siteSettings.logo} pages={pages} />
         </header>
 
         <main className="min-h-screen">{children}</main>
 
-        <footer className="bg-eclipse-blue-dark text-white py-8">
+        <footer className="bg-eclipse-blue-dark py-8 text-white">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               <div>
-                <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+                <h3 className="mb-4 text-lg font-bold">Quick Links</h3>
                 <ul className="space-y-2">
                   <li>
                     <Link
                       href="/team"
-                      className="hover:text-eclipse-yellow-light transition-colors"
+                      className="transition-colors hover:text-eclipse-yellow-light"
                     >
                       Team
                     </Link>
@@ -65,7 +65,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   <li>
                     <Link
                       href="/sponsors"
-                      className="hover:text-eclipse-yellow-light transition-colors"
+                      className="transition-colors hover:text-eclipse-yellow-light"
                     >
                       Sponsors
                     </Link>
@@ -73,7 +73,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   <li>
                     <Link
                       href="/join"
-                      className="hover:text-eclipse-yellow-light transition-colors"
+                      className="transition-colors hover:text-eclipse-yellow-light"
                     >
                       Join Us
                     </Link>
@@ -83,7 +83,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
               {/* Social Links */}
               <div>
-                <h3 className="text-lg font-bold mb-4">Follow Us</h3>
+                <h3 className="mb-4 text-lg font-bold">Follow Us</h3>
                 <div className="flex space-x-4">
                   {contactInfo?.socialMedia.map((social: SocialMedia, index: number) => (
                     <a key={index} href={social.url} target="_blank">
@@ -94,7 +94,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               </div>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-white/10 text-center">
+            <div className="mt-8 border-t border-white/10 pt-8 text-center">
               <p>
                 &copy; {new Date().getFullYear()} {siteSettings.title}. All rights reserved.
               </p>

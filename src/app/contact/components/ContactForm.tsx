@@ -57,7 +57,7 @@ export default function ContactForm() {
         {isSubmitSuccessful && (
           <p className="text-green-500">Your message has been sent successfully!</p>
         )}
-        {submitError && <p className="text-red-500 ">{submitError}</p>}
+        {submitError && <p className="text-red-500">{submitError}</p>}
       </div>
       <div>
         <label htmlFor="name" className="block text-sm font-bold text-gray-700">
@@ -67,7 +67,7 @@ export default function ContactForm() {
           type="text"
           id="name"
           {...register('name')}
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
         />
         {errors.name && <p className="text-red-500">{errors.name.message}</p>}
       </div>
@@ -79,7 +79,7 @@ export default function ContactForm() {
           type="email"
           id="email"
           {...register('email')}
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
         />
         {errors.email && <p className="text-red-500">{errors.email.message}</p>}
       </div>
@@ -90,7 +90,7 @@ export default function ContactForm() {
         <textarea
           id="message"
           {...register('message')}
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
         />
         {errors.message && <p className="text-red-500">{errors.message.message}</p>}
       </div>
@@ -98,7 +98,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isProcessing}
-          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           {isProcessing ? 'Submitting...' : 'Submit'}
         </button>

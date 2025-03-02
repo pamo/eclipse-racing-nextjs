@@ -29,7 +29,7 @@ export default async function Home() {
   const siteSettings = await getSiteSettings();
 
   return (
-    <main className="min-h-screen mx-auto p-4 prose min-w-full">
+    <main className="prose mx-auto min-h-screen min-w-full p-4">
       <Card colorClasses={getColorClasses(1)}>
         <h1>{siteSettings.description}</h1>
         <PortableText value={siteSettings.content} components={components} />

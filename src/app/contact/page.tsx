@@ -20,14 +20,14 @@ export default async function ContactPage() {
   const contactInfo = await getContactInfo();
   if (!contactInfo) notFound();
   return (
-    <div className="container mx-auto px-4 py-8 prose">
+    <div className="container prose mx-auto px-4 py-8">
       <Card colorClasses={getColorClasses(3)}>
-        <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+        <h1 className="mb-6 text-3xl font-bold">Contact Us</h1>
         <p>Have questions or want to get in touch? We&apos;d love to hear from you!</p>
         <ContactForm />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-bold mt-6 mb-4">Follow Us</h2>
+            <h2 className="mb-4 mt-6 text-2xl font-bold">Follow Us</h2>
             <div className="flex space-x-4">
               {contactInfo.socialMedia.map((social: SocialMedia, index: number) => (
                 <a key={index} href={social.url} className="text-blue-500 hover:text-blue-700">

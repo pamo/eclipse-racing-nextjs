@@ -20,7 +20,7 @@ export function Navigation({ siteTitle, logo, pages }: NavigationProps) {
         <li key={page.slug}>
           <Link
             href={`/${page.slug}`}
-            className={`${onClick ? 'block py-2' : ''} hover:text-eclipse-yellow-light transition-colors`}
+            className={`${onClick ? 'block py-2' : ''} transition-colors hover:text-eclipse-yellow-light`}
             onClick={onClick}
           >
             {page.title}
@@ -30,33 +30,37 @@ export function Navigation({ siteTitle, logo, pages }: NavigationProps) {
 
   return (
     <nav className="container mx-auto px-4">
-      <div className="flex items-center justify-between h-16">
-        <Link href="/" className="text-xl font-bold text-eclipse-yellow-light flex">
-          {logo ? <Image src={logo} alt={siteTitle} width={100} height={48} className="m-2" /> :  <span className="text-xl font-bold text-eclipse-yellow-light">{siteTitle}</span>}
+      <div className="flex h-16 items-center justify-between">
+        <Link href="/" className="flex text-xl font-bold text-eclipse-yellow-light">
+          {logo ? (
+            <Image src={logo} alt={siteTitle} width={100} height={48} className="m-2" />
+          ) : (
+            <span className="text-xl font-bold text-eclipse-yellow-light">{siteTitle}</span>
+          )}
         </Link>
 
         {/* Hamburger Menu Button (Mobile) */}
         <button
-          className="md:hidden p-2"
+          className="p-2 md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          <div className="w-6 h-0.5 bg-white mb-1.5"></div>
-          <div className="w-6 h-0.5 bg-white mb-1.5"></div>
-          <div className="w-6 h-0.5 bg-white"></div>
+          <div className="mb-1.5 h-0.5 w-6 bg-white"></div>
+          <div className="mb-1.5 h-0.5 w-6 bg-white"></div>
+          <div className="h-0.5 w-6 bg-white"></div>
         </button>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-8">{renderNavLinks()}</ul>
+        <ul className="hidden space-x-8 md:flex">{renderNavLinks()}</ul>
       </div>
 
       {/* Mobile Navigation */}
       <div
         className={`${
           isMenuOpen ? 'max-h-64' : 'max-h-0'
-        } md:hidden overflow-hidden transition-all duration-300 ease-in-out`}
+        } overflow-hidden transition-all duration-300 ease-in-out md:hidden`}
       >
-        <ul className="py-2 space-y-2">{renderNavLinks(() => setIsMenuOpen(false))}</ul>
+        <ul className="space-y-2 py-2">{renderNavLinks(() => setIsMenuOpen(false))}</ul>
       </div>
     </nav>
   );

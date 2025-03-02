@@ -53,14 +53,14 @@ export default async function TeamPage() {
 
   return (
     <Suspense fallback={<SkeletonTeamPage />}>
-      <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-8 max-w-7xl">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-eclipse-blue-dark text-center">
+      <div className="container mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-8">
+        <h1 className="mb-4 text-center text-3xl font-bold text-eclipse-blue-dark md:mb-8 md:text-4xl">
           Our Team
         </h1>
 
         <div className="space-y-6 md:space-y-8">
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-eclipse-blue-dark">
+            <h2 className="mb-4 text-2xl font-bold text-eclipse-blue-dark md:mb-6 md:text-3xl">
               Active Members
             </h2>
             <TeamMembersList members={activeMembers} />
@@ -68,7 +68,7 @@ export default async function TeamPage() {
 
           {alumniMembers.length > 0 && (
             <section>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-eclipse-blue-dark">
+              <h2 className="mb-4 text-2xl font-bold text-eclipse-blue-dark md:mb-6 md:text-3xl">
                 Alumni
               </h2>
               <TeamMembersList members={alumniMembers} showExtraCard />

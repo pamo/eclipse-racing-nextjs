@@ -2,8 +2,8 @@ import SkeletonSection from './SkeletonSection';
 
 export default function SkeletonTeamPage() {
   return (
-    <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-8 max-w-7xl">
-      <h1 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-eclipse-blue-dark text-center">
+    <div className="container mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-8">
+      <h1 className="mb-4 text-center text-3xl font-bold text-eclipse-blue-dark md:mb-8 md:text-4xl">
         Our Team
       </h1>
 

@@ -6,12 +6,12 @@ interface SkeletonSectionProps {
 export default function SkeletonSection({ title, itemCount }: SkeletonSectionProps) {
   return (
     <section>
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-eclipse-blue-dark">
+      <h2 className="mb-4 text-2xl font-bold text-eclipse-blue-dark md:mb-6 md:text-3xl">
         {title}
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {Array.from({ length: itemCount }).map((_, index) => (
-          <div key={index} className="animate-pulse bg-gray-300 h-48 rounded-md"></div>
+          <div key={index} className="h-48 animate-pulse rounded-md bg-gray-300"></div>
         ))}
       </div>
     </section>

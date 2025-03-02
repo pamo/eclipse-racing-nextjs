@@ -21,13 +21,13 @@ body {
 
 @layer utilities {
   .psychedelic-bg {
-    @apply bg-gradient-to-r from-eclipse-blue-light via-eclipse-pink-light via-eclipse-yellow-light to-eclipse-green-light bg-[length:400%_400%] animate-gradient;
+    @apply animate-gradient bg-gradient-to-r from-eclipse-blue-light via-eclipse-pink-light via-eclipse-yellow-light to-eclipse-green-light bg-[length:400%_400%];
   }
 }
 
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded font-bold transition duration-300 ease-in-out;
+    @apply rounded px-4 py-2 font-bold transition duration-300 ease-in-out;
   }
 
   .pixel-borders {

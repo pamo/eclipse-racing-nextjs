@@ -32,11 +32,11 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
   }
 
   return (
-    <div className="flex items-center justify-center space-x-2 mt-4">
+    <div className="mt-4 flex items-center justify-center space-x-2">
       <button
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 rounded border bg-white text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="rounded border bg-white px-3 py-1 text-gray-600 disabled:cursor-not-allowed disabled:opacity-50"
         aria-label="First page"
       >
         &laquo;
@@ -45,7 +45,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 rounded border bg-white text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="rounded border bg-white px-3 py-1 text-gray-600 disabled:cursor-not-allowed disabled:opacity-50"
         aria-label="Previous page"
       >
         &lsaquo;
@@ -55,7 +55,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
         <button
           key={pageNumber}
           onClick={() => pageNumber !== currentPage && onPageChange(pageNumber)}
-          className={`px-3 py-1 rounded border ${
+          className={`rounded border px-3 py-1 ${
             pageNumber === currentPage
               ? 'bg-blue-600 text-white'
               : 'bg-white text-gray-600 hover:bg-gray-50'
@@ -68,7 +68,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 rounded border bg-white text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="rounded border bg-white px-3 py-1 text-gray-600 disabled:cursor-not-allowed disabled:opacity-50"
         aria-label="Next page"
       >
         &rsaquo;
@@ -77,7 +77,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
       <button
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 rounded border bg-white text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="rounded border bg-white px-3 py-1 text-gray-600 disabled:cursor-not-allowed disabled:opacity-50"
         aria-label="Last page"
       >
         &raquo;

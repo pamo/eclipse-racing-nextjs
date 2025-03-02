@@ -50,7 +50,7 @@ function SponsorCard({ sponsor, level }: { sponsor: Sponsor; level: string }) {
         href={sponsor.website}
         target="_blank"
         rel="noopener noreferrer"
-        className="block w-full relative"
+        className="relative block w-full"
         style={{ aspectRatio: getSponsorAspectRatio(level) }}
       >
         <Image
@@ -154,7 +154,7 @@ export default async function SponsorsPage() {
 
       {/* Gold Sponsors */}
       {sponsorsByLevel.gold && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {sponsorsByLevel.gold.map((sponsor) => (
             <SponsorCard key={sponsor._id} sponsor={sponsor} level="gold" />
           ))}
@@ -163,7 +163,7 @@ export default async function SponsorsPage() {
 
       {/* Silver Sponsors */}
       {sponsorsByLevel.silver && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {sponsorsByLevel.silver.map((sponsor) => (
             <SponsorCard key={sponsor._id} sponsor={sponsor} level="silver" />
           ))}
@@ -172,7 +172,7 @@ export default async function SponsorsPage() {
 
       {/* Bronze Sponsors */}
       {sponsorsByLevel.bronze && (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
           {sponsorsByLevel.bronze.map((sponsor) => (
             <SponsorCard key={sponsor._id} sponsor={sponsor} level="bronze" />
           ))}
