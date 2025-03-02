@@ -4,7 +4,6 @@ import Loading from './Loading';
 import { ECLIPSE_TEAM_API_ID, ONE_HOUR } from './constants';
 
 export default async function RaceResultsWidget() {
-  // Fetch the initial data server-side
   const initialData = await getRaceResults(1, 10);
   return (
     <div className="race-results-widget">

@@ -27,6 +27,7 @@ export interface RaceResult {
   place: number;
   name: string;
   discipline: string;
+  bioLink: string;
 }
 
 export interface RaceResults {
@@ -34,5 +35,12 @@ export interface RaceResults {
   pagination: {
     currentPage: number;
     totalPages: number;
+  };
+}
+export interface GroupedRaceResults {
+  [date: string]: {
+    [raceName: string]: {
+      [category: string]: RaceResult[];
+    };
   };
 }

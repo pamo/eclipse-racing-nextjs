@@ -34,9 +34,8 @@ export default async function Home() {
         <h1>{siteSettings.description}</h1>
         <PortableText value={siteSettings.content} components={components} />
       </Card>
-      <Card className="col-span-1">
-        <RaceResultsWidget />
-      </Card>
+
+      <RaceResultsWidget />
     </main>
   );
 }
