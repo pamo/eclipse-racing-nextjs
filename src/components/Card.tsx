@@ -1,4 +1,3 @@
-import { getColorClasses } from '@/utils/color';
 import React from 'react';
 
 export interface ColorClasses {
@@ -10,15 +9,11 @@ export interface ColorClasses {
 
 interface CardProps {
   children: React.ReactNode;
-  colorClasses?: ColorClasses;
+  colorClasses: ColorClasses;
   className?: string;
 }
 
-export function Card({
-  colorClasses = getColorClasses(Math.floor(Math.random() * 6)),
-  children,
-  className,
-}: CardProps) {
+export function Card({ colorClasses, children, className }: CardProps) {
   return (
     <div className="relative h-full">
       <div
@@ -28,7 +23,7 @@ export function Card({
       <div
         className={`group relative z-10 h-full rounded-lg border-2 bg-white transition-all duration-300 hover:translate-x-1 hover:translate-y-1 ${colorClasses.border} ${className ? className : ''}`}
       >
-        <div className="h-full rounded-lg bg-white p-4 md:p-6">{children}</div>
+        <div className="h-full rounded-lg bg-white p-2 md:p-4">{children}</div>
       </div>
     </div>
   );

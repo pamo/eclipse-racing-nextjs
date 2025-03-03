@@ -8,8 +8,8 @@ interface RaceCategoryProps {
 }
 
 const RaceCategory: React.FC<RaceCategoryProps> = ({ category, results }) => (
-  <div className="mt-4">
-    <h4 className="text-md font-semibold">{category}</h4>
+  <div className="mt-2">
+    <h4 className="text-md m-0 font-semibold">{category}</h4>
     {results.map((result, index) => (
       <RaceResultItem key={index} result={result} />
     ))}

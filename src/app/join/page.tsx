@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import type { PortableTextBlock } from '@portabletext/types';
 import { Card } from '@/components/Card';
 import { PushLink } from '@/components/PushButton';
+import { getColorClasses } from '@/utils/color';
 interface ApplicationInfo {
   title: string;
   content: PortableTextBlock[];
@@ -28,7 +29,7 @@ export default async function JoinPage() {
 
   return (
     <div className="container prose mx-auto p-4">
-      <Card>
+      <Card colorClasses={getColorClasses(5)}>
         <h1>{applicationInfo.title}</h1>
         <PortableText value={applicationInfo.content} />
         <h2>Steps to Apply</h2>

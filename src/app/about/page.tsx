@@ -19,7 +19,7 @@ export default async function AboutPage() {
 
   return (
     <div className="prose mx-auto min-h-screen p-4">
-      <Card colorClasses={getColorClasses(2)}>
+      <Card colorClasses={getColorClasses(4)}>
         <h1 className="mb-6 text-3xl font-bold">{page.title}</h1>
 
         <PortableText value={page.content} />

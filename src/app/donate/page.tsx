@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import type { PortableTextBlock } from '@portabletext/types';
 import { Card } from '@/components/Card';
 import { PushLink } from '@/components/PushButton';
+import { getColorClasses } from '@/utils/color';
 
 interface DonationInfo {
   title: string;
@@ -30,7 +31,7 @@ export default async function DonatePage() {
 
   return (
     <div className="container prose mx-auto p-4">
-      <Card>
+      <Card colorClasses={getColorClasses(2)}>
         <h1 className="mb-6 text-3xl font-bold">{donationInfo.title}</h1>
 
         <PortableText value={donationInfo.content} />

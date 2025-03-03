@@ -21,7 +21,7 @@ export default async function ContactPage() {
   if (!contactInfo) notFound();
   return (
     <div className="container prose mx-auto px-4 py-8">
-      <Card colorClasses={getColorClasses(3)}>
+      <Card colorClasses={getColorClasses(1)}>
         <h1 className="mb-6 text-3xl font-bold">Contact Us</h1>
         <p>Have questions or want to get in touch? We&apos;d love to hear from you!</p>
         <ContactForm />

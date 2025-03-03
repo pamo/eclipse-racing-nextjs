@@ -38,7 +38,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
       <PushButton
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
-        className="hover:bg-gray-50"
+        className="bg-white hover:bg-gray-50"
         aria-label="First page"
       >
         &laquo;
@@ -47,7 +47,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
       <PushButton
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="hover:bg-gray-50"
+        className="bg-white hover:bg-gray-50"
         aria-label="Previous page"
       >
         &lsaquo;
@@ -60,7 +60,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
           className={`${
             pageNumber === currentPage
               ? 'bg-eclipse-green hover:bg-eclipse-green-light'
-              : 'text-gray-600 hover:bg-gray-50'
+              : 'bg-white text-gray-600 hover:bg-gray-50'
           }`}
         >
           {pageNumber}
@@ -70,7 +70,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
       <PushButton
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="hover:bg-gray-50"
+        className="bg-white hover:bg-gray-50"
         aria-label="Next page"
       >
         &rsaquo;
@@ -79,7 +79,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
       <PushButton
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
-        className="hover:bg-gray-50"
+        className="bg-white hover:bg-gray-50"
         aria-label="Last page"
       >
         &raquo;
