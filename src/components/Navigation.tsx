@@ -57,7 +57,7 @@ export function Navigation({ siteTitle, logo, pages }: NavigationProps) {
       {/* Mobile Navigation */}
       <div
         className={`${
-          isMenuOpen ? 'max-h-64' : 'max-h-0'
+          isMenuOpen ? 'max-h-96' : 'max-h-0'
         } overflow-hidden transition-all duration-300 ease-in-out md:hidden`}
       >
         <ul className="space-y-2 py-2">{renderNavLinks(() => setIsMenuOpen(false))}</ul>

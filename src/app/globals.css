@@ -41,6 +41,26 @@ body {
   .pixel-shadow {
     @apply shadow-[8px_8px_0_0_theme(colors.eclipse-blue.dark)];
   }
+
+  .chunky-text {
+    @apply mb-2 text-4xl font-black uppercase tracking-wide;
+    position: relative;
+    color: white;
+    text-shadow:
+      -2px -2px 0 black,
+      2px -2px 0 black,
+      -2px 2px 0 black,
+      2px 2px 0 black;
+  }
+
+  .chunky-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    z-index: -1;
+    -webkit-text-stroke: 2px black;
+  }
 }
 
 @layer base {
@@ -54,8 +74,4 @@ body {
       text-decoration: underline;
     }
   }
-}
-
-.text-stroke {
-  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 }
