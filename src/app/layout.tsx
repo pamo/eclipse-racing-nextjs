@@ -64,6 +64,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   </li>
                   <li>
                     <Link
+                      href="/donate"
+                      className="transition-colors hover:text-eclipse-yellow-light"
+                    >
+                      Donate
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/sponsors"
                       className="transition-colors hover:text-eclipse-yellow-light"
                     >
@@ -81,7 +89,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 </ul>
               </div>
 
-              {/* Social Links */}
               <div>
                 <h3 className="mb-4 text-lg font-bold">Follow Us</h3>
                 <div className="flex space-x-4">
