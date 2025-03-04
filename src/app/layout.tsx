@@ -1,4 +1,5 @@
 import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { Navigation } from '@/components/Navigation';
@@ -109,6 +110,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           </div>
         </footer>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
