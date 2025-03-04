@@ -29,5 +29,5 @@ function SkeletonCard() {
 export default function Loading() {
   const cards = Array.from({ length: 4 }, (_, i) => <SkeletonCard key={i} />);
 
-  return <div className="grid grid-cols-1 gap-6 md:grid-cols-2">{cards}</div>;
+  return <div className="grid grid-cols-1 gap-6 lg:auto-rows-fr lg:grid-cols-2">{cards}</div>;
 }

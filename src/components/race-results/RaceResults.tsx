@@ -39,13 +39,13 @@ export default function RaceResults({ initialResults, initialPage = 1 }: RaceRes
   };
 
   return (
-    <div className="space-y-6">
+    <div>
       {isLoading ? (
         <Loading />
       ) : (
         <>
           {Object.keys(results).length > 0 ? (
-            <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2 lg:gap-4">
+            <div className="grid grid-cols-1 gap-6 lg:auto-rows-fr lg:grid-cols-2">
               {Object.keys(results).map((date) => (
                 <Fragment key={date}>
                   {Object.keys(results[date]).map((raceName) => (
