@@ -36,7 +36,7 @@ export default async function DonatePage() {
 
         <PortableText value={donationInfo.content} />
 
-        <div className="flex flex-col sm:flex-row sm:space-x-4">
+        <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-4">
           <PushLink
             href={donationInfo.donationLink}
             className="bg-eclipse-blue text-white hover:bg-eclipse-blue-dark sm:mb-0 sm:inline-block"

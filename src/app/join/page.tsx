@@ -29,7 +29,7 @@ export default async function JoinPage() {
 
   return (
     <div className="container prose mx-auto p-4">
-      <Card colorClasses={getColorClasses(5)}>
+      <Card colorClasses={getColorClasses(5)} className="p-2">
         <h1>{applicationInfo.title}</h1>
         <PortableText value={applicationInfo.content} />
         <h2>Steps to Apply</h2>
