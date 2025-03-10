@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           totalRaces: 0,
           lastUpdated: new Date().toISOString(),
         },
-        error: 'Internal Server Error'
+        error: 'Internal Server Error',
       });
     }
   }

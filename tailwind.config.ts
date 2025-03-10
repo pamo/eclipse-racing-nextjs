@@ -16,20 +16,22 @@ function generateColorVariants(baseColor: string) {
 }
 
 const colors = Object.fromEntries(
-  ECLIPSE_COLORS.map(colorName => [
+  ECLIPSE_COLORS.map((colorName) => [
     `eclipse-${colorName}`,
-    generateColorVariants(BASE_COLORS[colorName])
+    generateColorVariants(BASE_COLORS[colorName]),
   ])
 );
 
-const buttonSafelist = ECLIPSE_COLORS.flatMap(color => [
+const buttonSafelist = ECLIPSE_COLORS.flatMap((color) => [
   `bg-eclipse-${color}`,
   `hover:bg-eclipse-${color}-dark`,
-  `text-white`
+  `text-white`,
 ]);
 const safelistPatterns = [
   // Basic utility patterns
-  new RegExp(`^(${UTILITY_PREFIXES.join('|')})-eclipse-(${ECLIPSE_COLORS.join('|')})(-light|-dark)?$`),
+  new RegExp(
+    `^(${UTILITY_PREFIXES.join('|')})-eclipse-(${ECLIPSE_COLORS.join('|')})(-light|-dark)?$`
+  ),
   // Background gradient patterns
   new RegExp(`^bg-gradient-to-[trbl]{1,2}$`),
   // Animation patterns
@@ -64,7 +66,7 @@ module.exports = {
     },
   },
   safelist: [
-    ...safelistPatterns.map(pattern => ({
+    ...safelistPatterns.map((pattern) => ({
       pattern,
       variants: VARIANTS,
     })),
