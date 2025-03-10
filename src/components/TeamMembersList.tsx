@@ -4,7 +4,18 @@ import { ExpandedCard } from '@/components/ExpandedCard';
 import { getColorClasses } from '@/utils/color';
 import { getBoardPositionTitle, TeamMember } from '@/types/team';
 import { Avatar } from './Avatar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+function toKebabCase(str: string): string {
+  return str
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+}
+
+function getMemberHash(firstName: string, lastName: string): string {
+  return `${toKebabCase(firstName)}-${toKebabCase(lastName)}`;
+}
 
 export default function TeamMembersList({
   members,
@@ -14,7 +25,25 @@ export default function TeamMembersList({
   showExtraCard?: boolean;
 }) {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const member = members.find((m) => getMemberHash(m.firstName, m.lastName) === hash);
+      if (member) {
+        setSelectedMember(member);
+      }
+    }
+  }, [members]);
+  const handleMemberClick = (member: TeamMember) => {
+    setSelectedMember(member);
+    const hash = getMemberHash(member.firstName, member.lastName);
+    window.history.pushState(null, '', `#${hash}`);
+  };
 
+  const handleClose = () => {
+    setSelectedMember(null);
+    window.history.pushState(null, '', window.location.pathname);
+  };
   return (
     <>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
@@ -23,7 +52,7 @@ export default function TeamMembersList({
           return (
             <button
               key={member._id}
-              onClick={() => setSelectedMember(member)}
+              onClick={() => handleMemberClick(member)}
               className="rounded-lg text-left focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
               <Card key={member._id} colorClasses={colorClasses}>
@@ -78,7 +107,7 @@ export default function TeamMembersList({
               : getColorClasses(0)
           }
           isOpen={!!selectedMember}
-          onClose={() => setSelectedMember(null)}
+          onClose={handleClose}
         />
       )}
     </>
