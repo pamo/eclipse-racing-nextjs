@@ -49,7 +49,7 @@ export default async function LinksPage() {
             className="block transition-transform hover:scale-[1.02]"
           >
             <Card colorClasses={getColorClasses(index)}>
-              <div className="flex items-center space-x-4 p-4">
+              <div className="flex min-w-0 items-center space-x-4 p-4">
                 {link.icon?.asset && (
                   <div className="h-12 w-12 flex-shrink-0">
                     <Image
@@ -61,7 +61,7 @@ export default async function LinksPage() {
                     />
                   </div>
                 )}
-                <div className="flex-grow">
+                <div className="min-w-0 flex-1">
                   <h2 className="text-lg font-semibold">{link.title}</h2>
                   <p className="truncate text-sm text-gray-500">{link.url}</p>
                 </div>
