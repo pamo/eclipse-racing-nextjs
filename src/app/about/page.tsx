@@ -1,30 +1,46 @@
-import { client } from '@/lib/sanity';
-import { notFound } from 'next/navigation';
-import { PortableText } from '@portabletext/react';
 import { Card } from '@/components/Card';
+import { client, urlFor } from '@/lib/sanity';
 import { getColorClasses } from '@/utils/color';
-import { urlFor } from '@/lib/sanity';
-import Image from 'next/image';
 import type { PortableTextComponents } from '@portabletext/react';
+import { PortableText } from '@portabletext/react';
+import { getImageDimensions } from '@sanity/asset-utils';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
 const components: PortableTextComponents = {
   types: {
-    image: ({ value }) => (
-      <div className="my-8 overflow-hidden rounded-lg">
+    image: ({ value }) => {
+      const { width, height } = getImageDimensions(value);
+      const hotspot = value.hotspot || { x: 0.5, y: 0.5 };
+
+      return (
         <Image
-          src={urlFor(value).width(800).height(450).format('webp').quality(80).url()}
-          alt={value.alt || ''}
-          width={800}
-          height={450}
-          className="h-auto w-full"
-          loading="lazy"
+          src={urlFor(value.asset)
+            .width(1200)
+            .height(Math.round(1200 * (height / width)))
+            .auto('format')
+            .fit('crop')
+            .crop('focalpoint')
+            .focalPoint(hotspot.x, hotspot.y)
+            .quality(100)
+            .url()}
+          alt={value.alt || 'Photo of the team'}
+          width={1200}
+          height={Math.round(1200 * (height / width))}
+          className="my-0 h-auto w-full overflow-hidden rounded-lg"
           sizes="(max-width: 768px) 100vw, 800px"
+          loading="eager"
           placeholder="blur"
-          blurDataURL={urlFor(value).width(50).height(28).format('webp').quality(20).url()}
+          blurDataURL={urlFor(value.asset)
+            .width(50)
+            .height(Math.round(50 * (height / width)))
+            .auto('format')
+            .quality(30)
+            .url()}
         />
-      </div>
-    ),
+      );
+    },
   },
 };
 async function getAboutPage() {

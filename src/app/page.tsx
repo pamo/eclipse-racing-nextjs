@@ -13,13 +13,25 @@ const components = {
       const { width, height } = getImageDimensions(value);
       return (
         <Image
-          src={urlFor(value.asset).fit('max').url()}
-          alt="Photo of the team"
-          width={width}
-          height={height}
-          style={{
-            aspectRatio: width / height,
-          }}
+          src={urlFor(value.asset)
+            .width(1200)
+            .height(Math.round(1200 * (height / width)))
+            .auto('format')
+            .quality(100)
+            .url()}
+          alt={value.alt || 'Photo of the team'}
+          width={1200}
+          height={Math.round(1200 * (height / width))}
+          className="my-0 h-auto w-full overflow-hidden rounded-lg"
+          sizes="(max-width: 768px) 100vw, 800px"
+          loading="eager"
+          placeholder="blur"
+          blurDataURL={urlFor(value.asset)
+            .width(50)
+            .height(Math.round(50 * (height / width)))
+            .auto('format')
+            .quality(30)
+            .url()}
         />
       );
     },
