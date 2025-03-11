@@ -38,7 +38,8 @@ export function Avatar({
               .fit('crop')
               .crop('focalpoint')
               .focalPoint(image.hotspot?.x ?? 0.5, image.hotspot?.y ?? 0.5)
-              .quality(90)
+              .format('webp')
+              .quality(80)
               .url()}
             alt={`${firstName} ${lastName}`}
             width={400}
@@ -47,6 +48,8 @@ export function Avatar({
             onLoadingComplete={() => setIsLoading(false)}
             priority={priority}
             sizes="(max-width: 768px) 96px, (max-width: 1024px) 112px, 128px"
+            placeholder="blur"
+            blurDataURL={urlFor(image).width(40).height(40).format('webp').quality(20).url()}
           />
         </>
       ) : (
