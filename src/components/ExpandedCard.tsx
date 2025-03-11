@@ -17,6 +17,7 @@ interface ExpandedCardProps {
 
 export function ExpandedCard({ member, colorClasses, isOpen, onClose }: ExpandedCardProps) {
   const [imageLoading, setImageLoading] = useState(true);
+  const hotspot = member.image?.hotspot || { x: 0.5, y: 0.5 };
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -73,12 +74,25 @@ export function ExpandedCard({ member, colorClasses, isOpen, onClose }: Expanded
                             .width(800)
                             .height(800)
                             .fit('crop')
-                            .crop('center')
+                            .crop('focalpoint')
+                            .focalPoint(hotspot.x, hotspot.y)
+                            .format('webp')
                             .quality(90)
                             .url()}
                           alt={`${member.firstName} ${member.lastName}`}
                           width={800}
                           height={800}
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={urlFor(member.image)
+                            .width(40)
+                            .height(40)
+                            .fit('crop')
+                            .crop('focalpoint')
+                            .focalPoint(hotspot.x, hotspot.y)
+                            .format('webp')
+                            .quality(20)
+                            .url()}
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                           className={`h-full w-full object-cover transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'} `}
                           priority={true}
