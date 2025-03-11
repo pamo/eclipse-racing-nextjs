@@ -52,18 +52,22 @@ export default async function TeamPage() {
     .sort((a: TeamMember, b: TeamMember) => a.lastName.localeCompare(b.lastName));
 
   return (
-    <Suspense fallback={<SkeletonTeamPage />}>
+    <div className="min-h-screen">
       <div className="container mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-8">
         <h1 className="mb-4 text-center text-3xl font-bold text-eclipse-blue-dark md:mb-8 md:text-4xl">
           Our Team
         </h1>
 
-        <div className="space-y-6 md:space-y-8">
+        <div className="grid min-h-[500px] gap-6 md:gap-8">
           <section>
             <h2 className="mb-4 text-2xl font-bold text-eclipse-blue-dark md:mb-6 md:text-3xl">
               Active Members
             </h2>
-            <TeamMembersList members={activeMembers} />
+            <div className="min-h-[400px]">
+              <Suspense fallback={<SkeletonTeamPage />}>
+                <TeamMembersList members={activeMembers} />
+              </Suspense>
+            </div>
           </section>
 
           {alumniMembers.length > 0 && (
@@ -71,11 +75,15 @@ export default async function TeamPage() {
               <h2 className="mb-4 text-2xl font-bold text-eclipse-blue-dark md:mb-6 md:text-3xl">
                 Alumni
               </h2>
-              <TeamMembersList members={alumniMembers} showExtraCard />
+              <div className="min-h-[400px]">
+                <Suspense fallback={<SkeletonTeamPage />}>
+                  <TeamMembersList members={alumniMembers} showExtraCard />
+                </Suspense>
+              </div>
             </section>
           )}
         </div>
       </div>
-    </Suspense>
+    </div>
   );
 }
