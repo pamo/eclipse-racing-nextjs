@@ -6,18 +6,22 @@ import { getColorClasses } from '@/utils/color';
 import { urlFor } from '@/lib/sanity';
 import Image from 'next/image';
 import type { PortableTextComponents } from '@portabletext/react';
+import { Suspense } from 'react';
 
 const components: PortableTextComponents = {
   types: {
     image: ({ value }) => (
       <div className="my-8 overflow-hidden rounded-lg">
         <Image
-          src={urlFor(value).width(800).height(450).url()}
+          src={urlFor(value).width(800).height(450).format('webp').quality(80).url()}
           alt={value.alt || ''}
           width={800}
           height={450}
           className="h-auto w-full"
-          priority={false}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 800px"
+          placeholder="blur"
+          blurDataURL={urlFor(value).width(50).height(28).format('webp').quality(20).url()}
         />
       </div>
     ),
@@ -40,7 +44,9 @@ export default async function AboutPage() {
     <div className="prose mx-auto min-h-screen p-4">
       <Card colorClasses={getColorClasses(4)}>
         <h1 className="mb-6 text-3xl font-bold">{page.title}</h1>
-        <PortableText value={page.content} components={components} />
+        <Suspense fallback={<div className="h-96 animate-pulse rounded-lg bg-neutral-100" />}>
+          <PortableText value={page.content} components={components} />
+        </Suspense>
       </Card>
     </div>
   );
