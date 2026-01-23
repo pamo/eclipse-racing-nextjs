@@ -43,12 +43,6 @@ export default async function DonatePage() {
           >
             Make a Donation
           </PushLink>
-          <PushLink
-            href="/contact"
-            className="bg-eclipse-green hover:bg-eclipse-green-dark sm:mb-0 sm:inline-block"
-          >
-            Contact for Sponsorship
-          </PushLink>
         </div>
       </Card>
     </div>

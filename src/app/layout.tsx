@@ -3,20 +3,11 @@ import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { Navigation } from '@/components/Navigation';
-import { client, getSiteSettings } from '@/lib/sanity';
-import { ContactInfo, SocialMedia } from '@/types/contact';
+import { getSiteSettings } from '@/lib/sanity';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Page } from '@/types/page';
 
 const inter = Inter({ subsets: ['latin'] });
-
-async function getContactInfo(): Promise<ContactInfo | null> {
-  return client.fetch(`
-    *[_type == "contactInfo"][0] {
-      socialMedia
-    }
-  `);
-}
 
 const pages: Page[] = [
   { title: 'About', slug: 'about' },
@@ -24,7 +15,6 @@ const pages: Page[] = [
   { title: 'Donate', slug: 'donate' },
   { title: 'Sponsors', slug: 'sponsors' },
   { title: 'Join', slug: 'join' },
-  { title: 'Contact', slug: 'contact' },
   { title: 'Events', slug: 'events' },
 ];
 
@@ -38,7 +28,6 @@ export async function generateMetadata() {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const siteSettings = await getSiteSettings();
-  const contactInfo = await getContactInfo();
 
   return (
     <html lang="en">
@@ -88,17 +77,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     </Link>
                   </li>
                 </ul>
-              </div>
-
-              <div>
-                <h3 className="mb-4 text-lg font-bold">Follow Us</h3>
-                <div className="flex space-x-4">
-                  {contactInfo?.socialMedia.map((social: SocialMedia, index: number) => (
-                    <a key={index} href={social.url} target="_blank">
-                      {social.platform}
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
 
